@@ -1,3 +1,27 @@
+<?php
+// Configuración de frases personalizadas
+$phrases = [
+    "Te Amo", "Eres la mejor", "Mi Vida", "Mi Amor", 
+    "Mi Cielo", "Eres Especial", "Mi Arquitecta Favorita", 
+    "Eres Mi Todo", "Te Adoro", "Mi Motorcito",
+    "Eres Hermosa", "Eres Increíble", "Mi Niña",
+    "Mi Sueño", "Mi Alegría", "Mi Inspiración"
+];
+
+$heartEmojis = ["❤️", "💖", "💕", "💗", "💓", "💘", "💝"];
+
+// Si se envía un formulario para agregar una nueva frase
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_phrase'])) {
+    $newPhrase = trim($_POST['new_phrase']);
+    if (!empty($newPhrase) && !in_array($newPhrase, $phrases)) {
+        $phrases[] = $newPhrase;
+    }
+}
+
+// Convertir arrays a formato JSON para JavaScript
+$phrasesJson = json_encode($phrases);
+$heartEmojisJson = json_encode($heartEmojis);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,6 +59,51 @@
             z-index: 100;
         }
         
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            z-index: 100;
+            width: 250px;
+        }
+        
+        #controls h3 {
+            margin-bottom: 10px;
+            color: #ff3366;
+        }
+        
+        #controls form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #controls input[type="text"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ff3366;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        #controls button {
+            padding: 8px;
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #controls button:hover {
+            background-color: #ff0044;
+        }
+        
         .heart {
             position: absolute;
             width: 20px;
@@ -52,6 +121,17 @@
     <div id="instructions">
         Haz clic y arrastra para rotar el universo | Rueda del mouse para acercar/alejar
     </div>
+    
+    <div id="controls">
+        <h3>Personaliza tu Universo</h3>
+        <form method="POST">
+            <input type="text" name="new_phrase" placeholder="Añade una frase de amor..." maxlength="50">
+            <button type="submit">Agregar al Universo</button>
+        </form>
+        <p style="margin-top: 10px; font-size: 12px;">
+            Frases actuales: <?php echo count($phrases); ?>
+        </p>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
@@ -60,14 +140,10 @@
         // Variables globales
         let scene, camera, renderer, controls;
         let heart, particles = [];
-        let phrases = [
-            "Te Amo", "Eres la mejor", "Mi Vida", "Mi Amor", 
-            "Mi Cielo", "Eres Especial", "Mi Arquitecta Favorita", 
-            "Eres Mi Todo", "Te Adoro", "Mi Motorcito",
-            "Eres Hermosa", "Eres Increíble", "Mi Niña",
-            "Mi Sueño", "Mi Alegría", "Mi Inspiración"
-        ];
-        let heartEmojis = ["❤️", "💖", "💕", "💗", "💓", "💘", "💝"];
+        
+        // Usar las frases desde PHP
+        let phrases = <?php echo $phrasesJson; ?>;
+        let heartEmojis = <?php echo $heartEmojisJson; ?>;
 
         // Inicializar la escena
         function init() {
