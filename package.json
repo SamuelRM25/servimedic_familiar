@@ -1,0 +1,13 @@
+{
+  "name": "servimedic-website",
+  "version": "1.0.0",
+  "description": "Sitio web de ServiMedic - Farmacia en línea",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build required for static site'",
+    "start": "echo 'Static site - no server required'"
+  },
+  "keywords": ["farmacia", "medicamentos", "salud"],
+  "author": "ServiMedic",
+  "license": "MIT"
+}
