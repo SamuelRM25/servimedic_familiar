@@ -175,25 +175,33 @@
             bottom: 20%;
         }
         
-        /* Carrusel pequeño */
+        /* Carrusel de servicios */
         .small-carousel-section {
             padding: 60px 0;
             background-color: white;
         }
         
         .small-carousel {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 80vh;
+            max-height: 800px;
+        }
+        
+        .small-carousel .carousel-item {
+            height: 80vh;
+            max-height: 800px;
         }
         
         .small-carousel .carousel-item img {
-            height: 400px;
+            height: 100%;
+            width: 100%;
             object-fit: contain;
             background-color: #f8f9fa;
-            padding: 10px;
+            padding: 20px;
         }
         
         /* Listado de medicamentos */
@@ -280,6 +288,73 @@
             font-size: 60px;
             color: var(--primary);
             margin-bottom: 20px;
+        }
+        
+        .catalogo-image {
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .catalogo-preview-img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: brightness(0.95) contrast(1.1);
+        }
+        
+        .catalogo-card:hover .catalogo-image {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation-play-state: paused;
+        }
+        
+        .catalogo-card:hover .catalogo-preview-img {
+            transform: scale(1.1) rotate(-2deg);
+            filter: brightness(1) contrast(1.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+            75% { transform: translateY(-10px) rotate(0.5deg); }
+        }
+        
+        .catalogo-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .catalogo-card:hover .catalogo-image::before {
+            animation: shine 0.8s ease-in-out;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
         }
         
         /* Modales para catálogos */
@@ -552,7 +627,7 @@
                     <div class="carousel-caption">
                         <h3>Medicamentos de Calidad</h3>
                         <p>Encuentra los mejores productos para tu salud y bienestar</p>
-                        <a href="#medicamentos" class="btn btn-primary-custom">Ver Catálogo</a>
+                        <a href="#catalogos" class="btn btn-primary-custom">Ver Catálogo</a>
                     </div>
                 </div>
                 <!-- Banner 2 - Imagen de medicamentos -->
@@ -593,20 +668,20 @@
                     <button type="button" data-bs-target="#smallCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#smallCarousel" data-bs-slide-to="2"></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="max-height: 80vh;">
                     <div class="carousel-item active">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox" style="max-height: 400px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios" style="max-height: 400px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico" style="max-height: 400px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                 </div>
@@ -629,7 +704,7 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <!-- Medicamento 1 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft">
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
                         <div class="med-icon-list">💊</div>
                         <div class="med-info">
                             <h4>Paracetamol</h4>
@@ -642,8 +717,8 @@
                     </div>
                     
                     <!-- Medicamento 2 -->
-                    <div class="med-list-item animate__animated animate__fadeInRight">
-                        <div class="med-icon-list">🩺</div>
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-visible">
+                        <div class="med-icon-list">💊</div>
                         <div class="med-info">
                             <h4>Ibuprofeno</h4>
                             <p>Antiinflamatorio no esteroideo. Reduce la inflamación y alivia el dolor.</p>
@@ -655,8 +730,8 @@
                     </div>
                     
                     <!-- Medicamento 3 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft">
-                        <div class="med-icon-list">🌡️</div>
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
+                        <div class="med-icon-list">💉</div>
                         <div class="med-info">
                             <h4>Amoxicilina</h4>
                             <p>Antibiótico de amplio espectro. Trata infecciones bacterianas.</p>
@@ -668,7 +743,7 @@
                     </div>
                     
                     <!-- Medicamento 4 -->
-                    <div class="med-list-item animate__animated animate__fadeInRight">
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-visible">
                         <div class="med-icon-list">💊</div>
                         <div class="med-info">
                             <h4>Omeprazol</h4>
@@ -681,8 +756,8 @@
                     </div>
                     
                     <!-- Medicamento 5 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft">
-                        <div class="med-icon-list">🩺</div>
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
+                        <div class="med-icon-list">💊</div>
                         <div class="med-info">
                             <h4>Loratadina</h4>
                             <p>Antihistamínico. Alivia los síntomas de alergias.</p>
@@ -693,17 +768,206 @@
                         </div>
                     </div>
                     
-                    <!-- Medicamento 6 -->
-                    <div class="med-list-item animate__animated animate__fadeInRight">
-                        <div class="med-icon-list">🌡️</div>
+                    <!-- Medicamento 6 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
                         <div class="med-info">
-                            <h4>Vitamina C</h4>
-                            <p>Suplemento vitamínico. Fortalece el sistema inmunológico.</p>
+                            <h4>Metformina</h4>
+                            <p>Antidiabético oral. Controla los niveles de glucosa en sangre.</p>
                             <div class="mt-2">
-                                <span class="badge bg-warning text-dark">Vitamina</span>
-                                <span class="badge bg-success">Refuerzo inmunológico</span>
+                                <span class="badge badge-primary">Antidiabético</span>
+                                <span class="badge bg-info">Receta médica</span>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Medicamento 7 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💉</div>
+                        <div class="med-info">
+                            <h4>Insulina</h4>
+                            <p>Hormona para control de diabetes. Regula los niveles de azúcar en sangre.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Hormonal</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 8 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Enalapril</h4>
+                            <p>Antihipertensivo. Controla la presión arterial y protege el corazón.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Cardiovascular</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 9 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Atorvastatina</h4>
+                            <p>Estatinas. Reduce el colesterol y previene enfermedades cardíacas.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Lipidolítico</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 10 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Losartán</h4>
+                            <p>Antihipertensivo. Protege los riñones y controla la presión arterial.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Cardiovascular</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 11 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Salbutamol</h4>
+                            <p>Broncodilatador. Alivia el asma y problemas respiratorios.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Broncodilatador</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 12 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Ranitidina</h4>
+                            <p>Antiácido. Reduce la acidez estomacal y protege el estómago.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Gastroprotector</span>
+                                <span class="badge badge-secondary">Antiácido</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 13 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💉</div>
+                        <div class="med-info">
+                            <h4>Vitamina B12</h4>
+                            <p>Suplemento vitamínico. Combate la anemia y fortalece el sistema nervioso.</p>
+                            <div class="mt-2">
+                                <span class="badge bg-warning text-dark">Vitamina</span>
+                                <span class="badge bg-success">Antianémico</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 14 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Azitromicina</h4>
+                            <p>Antibiótico de amplio espectro. Trata infecciones respiratorias.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Antibiótico</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 15 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Levotiroxina</h4>
+                            <p>Hormona tiroidea. Trata el hipotiroidismo y regula el metabolismo.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Hormonal</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 16 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Prednisona</h4>
+                            <p>Corticoide. Reduce la inflamación severa y trata enfermedades autoinmunes.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Corticoide</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 17 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Sertralina</h4>
+                            <p>Antidepresivo. Trata la depresión y trastornos de ansiedad.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Antidepresivo</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 18 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Furosemida</h4>
+                            <p>Diurético. Elimina líquidos retenidos y controla la presión arterial.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Diurético</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 19 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Clopidogrel</h4>
+                            <p>Antiplaquetario. Previene coágulos sanguíneos y protege el corazón.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Anticoagulante</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamento 20 - Oculto por defecto -->
+                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
+                        <div class="med-icon-list">💊</div>
+                        <div class="med-info">
+                            <h4>Alendronato</h4>
+                            <p>Osteoporosis. Fortalece los huesos y previene fracturas.</p>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Osteoprotector</span>
+                                <span class="badge bg-info">Receta médica</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón Ver Más -->
+                    <div class="text-center mt-4">
+                        <button id="verMasMedicamentos" class="btn btn-primary btn-lg">
+                            Ver más medicamentos <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -726,7 +990,9 @@
                 <!-- Catálogo 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="catalogo-card animate__animated animate__fadeInUp">
-                        <div class="catalogo-icon">📋</div>
+                        <div class="catalogo-image">
+                            <img src="catalogo1/Catalogo 1-1.jpeg" alt="Catálogo 1" class="catalogo-preview-img">
+                        </div>
                         <h4>Catálogo 1</h4>
                         <p>Medicamentos generales, productos gastroprotectores, analgésicos y más.</p>
                         <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogo1">
@@ -738,7 +1004,9 @@
                 <!-- Catálogo 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="catalogo-card animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="catalogo-icon">🧪</div>
+                        <div class="catalogo-image">
+                            <img src="catalogo2/Catalogo 2.pdf-1.jpeg" alt="Catálogo 2" class="catalogo-preview-img">
+                        </div>
                         <h4>Catálogo 2</h4>
                         <p>Suplementos nutricionales, antioxidantes, vitaminas y productos especializados.</p>
                         <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogo2">
@@ -750,7 +1018,9 @@
                 <!-- Catálogo de Vacunas -->
                 <div class="col-md-4 mb-4">
                     <div class="catalogo-card animate__animated animate__fadeInUp animate__delay-2s">
-                        <div class="catalogo-icon">💉</div>
+                        <div class="catalogo-image">
+                            <img src="catalogo-vacunas/Catalogo Vacunas-1.jpeg" alt="Catálogo de Vacunas" class="catalogo-preview-img">
+                        </div>
                         <h4>Catálogo de Vacunas</h4>
                         <p>Vacunas para diferentes enfermedades, desde hepatitis hasta fiebre amarilla.</p>
                         <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogoVacunas">
@@ -786,17 +1056,25 @@
             </div>
             
             <div class="row mt-5 pt-5">
-                <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="mb-4">¿Necesitas ayuda?</h3>
                     <p>Nuestro equipo de farmacéuticos está disponible para asesorarte sobre el medicamento más adecuado para tus necesidades.</p>
                     <p>Recuerda que algunos medicamentos requieren receta médica. Consulta siempre con un profesional de la salud.</p>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="mb-4">Realiza tu pedido fácilmente</h3>
                     <p>Consulta nuestro catálogo y contáctanos directamente para realizar tu pedido.</p>
                     <p>Te atenderemos de inmediato y coordinaremos la entrega de tu pedido.</p>
                     <a href="https://wa.me/50259167747?text=Hola,%20me%20interesa%20realizar%20un%20pedido%20de%20medicamentos" class="btn btn-whatsapp btn-lg mt-3" target="_blank">
                         <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-4">Agenda tu cita</h3>
+                    <p>¿Necesitas una consulta médica o asesoría personalizada? Agenda tu cita con nuestros profesionales de salud.</p>
+                    <p>Atención personalizada y confidencial para tu tranquilidad.</p>
+                    <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" class="btn btn-whatsapp btn-lg mt-3" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Agendar Cita por WhatsApp
                     </a>
                 </div>
             </div>
@@ -832,7 +1110,7 @@
             </div>
             <hr class="mt-4 mb-4">
             <div class="text-center">
-                <p>&copy; 2025 ServiMedic. Todos los derechos reservados.</p>
+                <p>&copy; 2025 RS Solutions. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1322,6 +1600,46 @@
             elementos.forEach(el => {
                 observer.observe(el);
             });
+        });
+        
+        // Funcionalidad de "Ver más" medicamentos
+        document.addEventListener('DOMContentLoaded', function() {
+            const verMasBtn = document.getElementById('verMasMedicamentos');
+            const medicamentosOcultos = document.querySelectorAll('.medicamento-oculto');
+            let mostrando = false;
+            
+            if (verMasBtn) {
+                verMasBtn.addEventListener('click', function() {
+                    if (!mostrando) {
+                        // Mostrar medicamentos ocultos
+                        medicamentosOcultos.forEach((med, index) => {
+                            setTimeout(() => {
+                                med.style.display = 'flex';
+                                med.classList.add('animate__animated', 'animate__fadeIn');
+                            }, index * 100);
+                        });
+                        
+                        // Cambiar texto del botón
+                        verMasBtn.innerHTML = 'Ver menos medicamentos <i class="fas fa-chevron-up"></i>';
+                        mostrando = true;
+                    } else {
+                        // Ocultar medicamentos
+                        medicamentosOcultos.forEach(med => {
+                            med.style.display = 'none';
+                            med.classList.remove('animate__animated', 'animate__fadeIn');
+                        });
+                        
+                        // Cambiar texto del botón
+                        verMasBtn.innerHTML = 'Ver más medicamentos <i class="fas fa-chevron-down"></i>';
+                        mostrando = false;
+                        
+                        // Hacer scroll a la sección de medicamentos
+                        document.getElementById('medicamentos').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
         });
     </script>
 </body>
