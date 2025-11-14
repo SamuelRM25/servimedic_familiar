@@ -1791,6 +1791,47 @@
                 });
             }
         });
+        
+        // Nueva función: compartir la imagen activa del catálogo por WhatsApp (si el dispositivo lo permite)
+        async function compartirCatalogoPorWhatsApp(btn) {
+            const modal = btn.closest('.modal');
+            const carousel = modal ? modal.querySelector('.catalogo-carousel') : null;
+            const activeItem = carousel ? carousel.querySelector('.carousel-item.active') : null;
+            const imgEl = activeItem ? activeItem.querySelector('img') : null;
+            const imgSrc = imgEl ? imgEl.getAttribute('src') : null;
+            const mensaje = 'Hola, me interesa realizar un pedido';
+
+            try {
+                if (imgSrc && navigator.canShare && navigator.canShare({ files: [] })) {
+                    const resp = await fetch(imgSrc);
+                    const blob = await resp.blob();
+                    const fileName = (imgSrc.split('/').pop() || 'catalogo.jpg');
+                    const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+
+                    await navigator.share({
+                        files: [file],
+                        text: mensaje
+                    });
+                    return;
+                }
+            } catch (err) {
+                // Fallback si falla el share
+            }
+
+            const texto = imgSrc ? `${mensaje}\n${imgSrc}` : mensaje;
+            const url = `https://wa.me/50259167747?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Vincular el click de los botones de "Consultar por WhatsApp" para compartir imagen + mensaje
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.consultar-catalogo').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    compartirCatalogoPorWhatsApp(this);
+                });
+            });
+        });
     </script>
 </body>
 </html>
