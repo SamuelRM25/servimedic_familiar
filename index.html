@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +11,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4FC3F7; /* Celeste */
-            --secondary: #FF9800; /* Naranja */
-            --accent: #FF5722; /* Naranja oscuro */
+            --primary: #4FC3F7;
+            /* Celeste */
+            --secondary: #FF9800;
+            /* Naranja */
+            --accent: #FF5722;
+            /* Naranja oscuro */
             --light: #f8f9fa;
             --dark: #2c3e50;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #E1F5FE 100%);
             color: var(--dark);
             overflow-x: hidden;
         }
-        
+
         /* Pantalla de bienvenida - Mejorada para responsive */
         #welcome-screen {
             position: fixed;
@@ -47,12 +52,12 @@
             padding: 20px;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
-        
+
         #welcome-screen.hidden {
             opacity: 0;
             visibility: hidden;
         }
-        
+
         .welcome-logo {
             width: 150px;
             height: 150px;
@@ -65,122 +70,130 @@
             align-items: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         @media (min-width: 768px) {
             .welcome-logo {
                 width: 200px;
                 height: 200px;
             }
         }
-        
+
         .welcome-logo img {
             max-width: 80%;
             max-height: 80%;
         }
-        
+
         .welcome-title {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 15px;
             line-height: 1.2;
         }
-        
+
         @media (min-width: 768px) {
             .welcome-title {
                 font-size: 3rem;
                 margin-bottom: 20px;
             }
         }
-        
+
         .welcome-subtitle {
             font-size: 1.1rem;
             margin-bottom: 20px;
             line-height: 1.4;
         }
-        
+
         @media (min-width: 768px) {
             .welcome-subtitle {
                 font-size: 1.5rem;
                 margin-bottom: 30px;
             }
         }
-        
+
         .welcome-text {
             font-size: 0.9rem;
             margin-bottom: 25px;
             max-width: 90%;
         }
-        
+
         @media (min-width: 768px) {
             .welcome-text {
                 font-size: 1rem;
                 max-width: 70%;
             }
         }
-        
+
         .scroll-indicator {
             position: absolute;
             bottom: 20px;
             animation: bounce 2s infinite;
         }
-        
+
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
                 transform: translateY(0);
             }
+
             40% {
                 transform: translateY(-10px);
             }
+
             60% {
                 transform: translateY(-5px);
             }
         }
-        
+
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
-        
+
         .navbar-brand img {
             height: 50px;
         }
-        
+
         .nav-link {
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        
+
         .nav-link:hover {
             color: var(--secondary) !important;
         }
-        
+
         /* Carrusel a pantalla completa */
         .fullscreen-carousel {
             height: 100vh;
-            margin-top: -76px; /* Compensar la altura del navbar */
+            margin-top: -76px;
+            /* Compensar la altura del navbar */
         }
-        
+
         .carousel-item {
             height: 100vh;
             background-size: cover;
             background-position: center;
         }
-        
+
         .carousel-caption {
             background: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
             padding: 30px;
             bottom: 20%;
         }
-        
+
         /* Carrusel de servicios */
         .small-carousel-section {
             padding: 60px 0;
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #E1F5FE 100%);
         }
-        
+
         .small-carousel {
             max-width: 1200px;
             margin: 0 auto;
@@ -190,12 +203,12 @@
             height: 80vh;
             max-height: 800px;
         }
-        
+
         .small-carousel .carousel-item {
             height: 80vh;
             max-height: 800px;
         }
-        
+
         .small-carousel .carousel-item img {
             height: 100%;
             width: 100%;
@@ -203,12 +216,12 @@
             background-color: #f8f9fa;
             padding: 20px;
         }
-        
+
         /* Listado de medicamentos */
         .medicamentos-section {
             padding: 80px 0;
         }
-        
+
         .med-list-item {
             background: white;
             border-radius: 15px;
@@ -220,29 +233,29 @@
             align-items: center;
             border-left: 5px solid var(--primary);
         }
-        
+
         .med-list-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border-left-color: var(--secondary);
         }
-        
+
         .med-icon-list {
             font-size: 40px;
             margin-right: 20px;
             color: var(--primary);
         }
-        
+
         .med-info {
             flex: 1;
         }
-        
+
         .section-title {
             position: relative;
             margin-bottom: 50px;
             padding-bottom: 15px;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -254,18 +267,18 @@
             background: var(--secondary);
             border-radius: 2px;
         }
-        
+
         /* Sección de catálogos */
         .catalogos-section {
             padding: 80px 0;
             background-color: var(--light);
         }
-        
+
         .catalogos-container {
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .catalogo-card {
             background: white;
             border-radius: 15px;
@@ -278,18 +291,18 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        
+
         .catalogo-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .catalogo-icon {
             font-size: 60px;
             color: var(--primary);
             margin-bottom: 20px;
         }
-        
+
         .catalogo-image {
             margin-bottom: 20px;
             position: relative;
@@ -304,7 +317,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: float 3s ease-in-out infinite;
         }
-        
+
         .catalogo-preview-img {
             width: 80%;
             height: 80%;
@@ -314,26 +327,39 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: brightness(0.95) contrast(1.1);
         }
-        
+
         .catalogo-card:hover .catalogo-image {
             transform: scale(1.05) rotate(2deg);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             animation-play-state: paused;
         }
-        
+
         .catalogo-card:hover .catalogo-preview-img {
             transform: scale(1.1) rotate(-2deg);
             filter: brightness(1) contrast(1.2);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-8px) rotate(1deg); }
-            50% { transform: translateY(-5px) rotate(-1deg); }
-            75% { transform: translateY(-10px) rotate(0.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(0.5deg);
+            }
         }
-        
+
         .catalogo-image::before {
             content: '';
             position: absolute;
@@ -341,73 +367,83 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
             transform: rotate(45deg);
             transition: all 0.6s ease;
             opacity: 0;
         }
-        
+
         .catalogo-card:hover .catalogo-image::before {
             animation: shine 0.8s ease-in-out;
         }
-        
+
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
         }
-        
+
         /* Modales para catálogos */
         .modal-catalogo .modal-content {
             border-radius: 15px;
             border: none;
         }
-        
+
         .modal-catalogo .modal-header {
             background: var(--primary);
             color: white;
             border-radius: 15px 15px 0 0;
             border-bottom: none;
         }
-        
+
         .modal-catalogo .modal-body {
             padding: 0;
             overflow: hidden;
         }
-        
+
         .catalogo-carousel {
             max-height: 70vh;
         }
-        
+
         .catalogo-carousel .carousel-item img {
             width: 100%;
             height: auto;
             max-height: 70vh;
             object-fit: contain;
         }
-        
+
         .catalogo-carousel .carousel-control-prev,
         .catalogo-carousel .carousel-control-next {
             width: 5%;
             opacity: 0.7;
         }
-        
+
         .catalogo-carousel .carousel-control-prev:hover,
         .catalogo-carousel .carousel-control-next:hover {
             opacity: 1;
         }
-        
+
         .catalogo-carousel .carousel-indicators {
             bottom: 10px;
         }
-        
+
         .catalogo-carousel .carousel-indicators button {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             margin: 0 5px;
         }
-        
+
         .btn-whatsapp {
             background-color: #25D366;
             border: none;
@@ -418,13 +454,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
-        
+
         .btn-whatsapp:hover {
             background-color: #128C7E;
             transform: translateY(-3px);
             box-shadow: 0 7px 20px rgba(37, 211, 102, 0.4);
         }
-        
+
         .btn-primary-custom {
             background-color: var(--primary);
             border: none;
@@ -434,13 +470,13 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary-custom:hover {
             background-color: #29B6F6;
             transform: translateY(-3px);
             box-shadow: 0 7px 20px rgba(79, 195, 247, 0.4);
         }
-        
+
         .btn-secondary-custom {
             background-color: var(--secondary);
             border: none;
@@ -450,13 +486,13 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary-custom:hover {
             background-color: #F57C00;
             transform: translateY(-3px);
             box-shadow: 0 7px 20px rgba(255, 152, 0, 0.4);
         }
-        
+
         .floating-btn {
             position: fixed;
             bottom: 30px;
@@ -476,31 +512,33 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .floating-btn:hover {
             transform: scale(1.1);
             animation: none;
         }
-        
+
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
             }
+
             70% {
                 box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-        
+
         .footer {
             background: var(--dark);
             color: white;
             padding: 50px 0 20px;
             margin-top: 50px;
         }
-        
+
         .contact-info {
             background: white;
             border-radius: 15px;
@@ -510,78 +548,79 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .feature-icon {
             font-size: 40px;
             color: var(--primary);
             margin-bottom: 15px;
         }
-        
+
         /* Badges personalizados */
         .badge-primary {
             background-color: var(--primary);
         }
-        
+
         .badge-secondary {
             background-color: var(--secondary);
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .fullscreen-carousel {
                 height: 70vh;
             }
-            
+
             .carousel-item {
                 height: 70vh;
             }
-            
+
             .carousel-caption {
                 bottom: 10%;
                 padding: 15px;
             }
-            
+
             .carousel-caption h3 {
                 font-size: 1.2rem;
             }
-            
+
             .small-carousel .carousel-item img {
                 height: 250px;
             }
-            
+
             .contact-info {
                 margin-top: -50px;
             }
-            
+
             .med-list-item {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .med-icon-list {
                 margin-right: 0;
                 margin-bottom: 15px;
             }
-            
+
             .modal-catalogo .modal-dialog {
                 margin: 20px;
             }
-            
+
             .catalogo-carousel {
                 max-height: 60vh;
             }
-            
+
             .catalogo-carousel .carousel-item img {
                 max-height: 60vh;
             }
         }
+
         .whatsapp-menu {
             position: fixed;
             bottom: 100px;
             right: 30px;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             display: none;
             flex-direction: column;
             padding: 10px;
@@ -607,25 +646,27 @@
         .whatsapp-menu a:hover {
             background-color: #128C7E;
         }
-        
+
         .whatsapp-menu a i {
             margin-right: 8px;
         }
-        
+
         .whatsapp-menu.show {
             display: flex;
         }
     </style>
 </head>
+
 <body>
-   <!-- Pantalla de bienvenida -->
+    <!-- Pantalla de bienvenida -->
     <div id="welcome-screen">
         <div class="welcome-logo">
             <img src="servimedic.png" alt="ServiMedic Logo" onerror="this.style.display='none'">
         </div>
         <h1 class="welcome-title animate__animated animate__fadeInDown">ServiMedic</h1>
         <p class="welcome-subtitle animate__animated animate__fadeInUp">Tu salud es nuestra prioridad</p>
-        <p class="welcome-text animate__animated animate__fadeIn animate__delay-1s">Deslízate hacia abajo para explorar nuestros productos y servicios</p>
+        <p class="welcome-text animate__animated animate__fadeIn animate__delay-1s">Deslízate hacia abajo para explorar
+            nuestros productos y servicios</p>
         <div class="scroll-indicator animate__animated animate__fadeIn animate__delay-2s">
             <i class="fas fa-chevron-down fa-2x"></i>
         </div>
@@ -644,11 +685,13 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#medicamentos">Medicamentos</a></li>
+
                     <li class="nav-item"><a class="nav-link" href="#catalogos">Catálogos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                     <li class="nav-item">
-                        <a class="btn btn-secondary-custom ms-2" href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" target="_blank">
+                        <a class="btn btn-secondary-custom ms-2"
+                            href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica"
+                            target="_blank">
                             <i class="fab fa-whatsapp"></i> Agendar Cita
                         </a>
                     </li>
@@ -661,48 +704,57 @@
     <section id="inicio">
         <div id="medicamentosCarousel" class="carousel slide fullscreen-carousel" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#medicamentosCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#medicamentosCarousel" data-bs-slide-to="0"
+                    class="active"></button>
                 <button type="button" data-bs-target="#medicamentosCarousel" data-bs-slide-to="1"></button>
                 <button type="button" data-bs-target="#medicamentosCarousel" data-bs-slide-to="2"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1585435557343-3b092031d5ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <div class="carousel-item active"
+                    style="background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 50%, #0288D1 100%);">
                     <div class="carousel-caption">
                         <h3>Medicamentos de Calidad</h3>
                         <p>Encuentra los mejores productos para tu salud y bienestar</p>
                         <a href="#catalogos" class="btn btn-primary-custom">Ver Catálogo</a>
-                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" class="btn btn-secondary-custom ms-2" target="_blank">
+                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica"
+                            class="btn btn-secondary-custom ms-2" target="_blank">
                             <i class="fab fa-whatsapp"></i> Agendar Cita
                         </a>
                     </div>
                 </div>
-                <!-- Banner 2 - Imagen de medicamentos -->
-                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <!-- Banner 2 - Degradado naranja -->
+                <div class="carousel-item"
+                    style="background: linear-gradient(135deg, #FF9800 0%, #FB8C00 50%, #F57C00 100%);">
                     <div class="carousel-caption">
                         <h3>Asesoramiento Profesional</h3>
                         <p>Nuestro equipo está listo para ayudarte con cualquier consulta</p>
                         <a href="#contacto" class="btn btn-primary-custom">Contáctanos</a>
-                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" class="btn btn-secondary-custom ms-2" target="_blank">
+                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica"
+                            class="btn btn-secondary-custom ms-2" target="_blank">
                             <i class="fab fa-whatsapp"></i> Agendar Cita
                         </a>
                     </div>
                 </div>
-                <!-- Banner 3 - Imagen de farmacéutico -->
-                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <!-- Banner 3 - Degradado celeste-naranja -->
+                <div class="carousel-item"
+                    style="background: linear-gradient(135deg, #4FC3F7 0%, #26C6DA 25%, #FF9800 75%, #F57C00 100%);">
                     <div class="carousel-caption">
                         <h3>Entrega Rápida</h3>
                         <p>Recibe tus medicamentos en la comodidad de tu hogar</p>
                         <a href="#contacto" class="btn btn-primary-custom">Realizar Pedido</a>
-                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" class="btn btn-secondary-custom ms-2" target="_blank">
+                        <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica"
+                            class="btn btn-secondary-custom ms-2" target="_blank">
                             <i class="fab fa-whatsapp"></i> Agendar Cita
                         </a>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#medicamentosCarousel" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#medicamentosCarousel"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#medicamentosCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#medicamentosCarousel"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
@@ -713,7 +765,7 @@
         <div class="container">
             <h2 class="text-center section-title">Nuestros Servicios</h2>
             <p class="text-center mb-5">Conoce más sobre nuestros servicios de sueroterapia</p>
-            
+
             <div id="smallCarousel" class="carousel slide small-carousel" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#smallCarousel" data-bs-slide-to="0" class="active"></button>
@@ -723,326 +775,49 @@
                 <div class="carousel-inner" style="max-height: 80vh;">
                     <div class="carousel-item active">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                            <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox"
+                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                            <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios"
+                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico" style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                            <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico"
+                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#smallCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#smallCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#smallCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#smallCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
             <div class="text-center mt-4">
-                <a href="https://wa.me/50247217618?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia" class="btn btn-whatsapp btn-lg" target="_blank">
+                <a href="https://wa.me/50247217618?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia"
+                    class="btn btn-whatsapp btn-lg" target="_blank">
                     <i class="fab fa-whatsapp"></i> Consultar por SueroTerapia
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Listado de Medicamentos -->
-    <section id="medicamentos" class="medicamentos-section">
-        <div class="container">
-            <h2 class="text-center section-title">Nuestros Medicamentos</h2>
-            <p class="text-center mb-5">Consulta nuestro catálogo de medicamentos disponibles</p>
-            
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <!-- Medicamento 1 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Paracetamol</h4>
-                            <p>Analgésico y antipirético de acción rápida. Alivia el dolor y reduce la fiebre.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Analgésico</span>
-                                <span class="badge badge-secondary">Antipirético</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 2 -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-visible">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Ibuprofeno</h4>
-                            <p>Antiinflamatorio no esteroideo. Reduce la inflamación y alivia el dolor.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antiinflamatorio</span>
-                                <span class="badge badge-secondary">Analgésico</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 3 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
-                        <div class="med-icon-list">💉</div>
-                        <div class="med-info">
-                            <h4>Amoxicilina</h4>
-                            <p>Antibiótico de amplio espectro. Trata infecciones bacterianas.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antibiótico</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 4 -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-visible">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Omeprazol</h4>
-                            <p>Protector gástrico. Reduce la producción de ácido estomacal.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Gastroprotector</span>
-                                <span class="badge badge-secondary">Antiácido</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 5 -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-visible">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Loratadina</h4>
-                            <p>Antihistamínico. Alivia los síntomas de alergias.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antialérgico</span>
-                                <span class="badge bg-info">No produce sueño</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 6 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Metformina</h4>
-                            <p>Antidiabético oral. Controla los niveles de glucosa en sangre.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antidiabético</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 7 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💉</div>
-                        <div class="med-info">
-                            <h4>Insulina</h4>
-                            <p>Hormona para control de diabetes. Regula los niveles de azúcar en sangre.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Hormonal</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 8 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Enalapril</h4>
-                            <p>Antihipertensivo. Controla la presión arterial y protege el corazón.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Cardiovascular</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 9 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Atorvastatina</h4>
-                            <p>Estatinas. Reduce el colesterol y previene enfermedades cardíacas.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Lipidolítico</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 10 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Losartán</h4>
-                            <p>Antihipertensivo. Protege los riñones y controla la presión arterial.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Cardiovascular</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 11 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Salbutamol</h4>
-                            <p>Broncodilatador. Alivia el asma y problemas respiratorios.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Broncodilatador</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 12 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Ranitidina</h4>
-                            <p>Antiácido. Reduce la acidez estomacal y protege el estómago.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Gastroprotector</span>
-                                <span class="badge badge-secondary">Antiácido</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 13 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💉</div>
-                        <div class="med-info">
-                            <h4>Vitamina B12</h4>
-                            <p>Suplemento vitamínico. Combate la anemia y fortalece el sistema nervioso.</p>
-                            <div class="mt-2">
-                                <span class="badge bg-warning text-dark">Vitamina</span>
-                                <span class="badge bg-success">Antianémico</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 14 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Azitromicina</h4>
-                            <p>Antibiótico de amplio espectro. Trata infecciones respiratorias.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antibiótico</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 15 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Levotiroxina</h4>
-                            <p>Hormona tiroidea. Trata el hipotiroidismo y regula el metabolismo.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Hormonal</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 16 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Prednisona</h4>
-                            <p>Corticoide. Reduce la inflamación severa y trata enfermedades autoinmunes.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Corticoide</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 17 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Sertralina</h4>
-                            <p>Antidepresivo. Trata la depresión y trastornos de ansiedad.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Antidepresivo</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 18 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Furosemida</h4>
-                            <p>Diurético. Elimina líquidos retenidos y controla la presión arterial.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Diurético</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 19 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInRight medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Clopidogrel</h4>
-                            <p>Antiplaquetario. Previene coágulos sanguíneos y protege el corazón.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Anticoagulante</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Medicamento 20 - Oculto por defecto -->
-                    <div class="med-list-item animate__animated animate__fadeInLeft medicamento-oculto" style="display: none;">
-                        <div class="med-icon-list">💊</div>
-                        <div class="med-info">
-                            <h4>Alendronato</h4>
-                            <p>Osteoporosis. Fortalece los huesos y previene fracturas.</p>
-                            <div class="mt-2">
-                                <span class="badge badge-primary">Osteoprotector</span>
-                                <span class="badge bg-info">Receta médica</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Botón Ver Más -->
-                    <div class="text-center mt-4">
-                        <button id="verMasMedicamentos" class="btn btn-primary btn-lg">
-                            Ver más medicamentos <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Botón de contacto general -->
-            <div class="text-center mt-5">
-                <p class="mb-4">¿Necesitas algún medicamento específico? Contáctanos directamente</p>
-                <a href="#contacto" class="btn btn-primary-custom btn-lg">Consultar Disponibilidad</a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Sección de Catálogos -->
     <section id="catalogos" class="catalogos-section">
         <div class="container">
             <h2 class="text-center section-title">Nuestros Catálogos</h2>
             <p class="text-center mb-5">Explora nuestros catálogos de productos disponibles</p>
-            
+
             <div class="row">
                 <!-- Catálogo 1 -->
                 <div class="col-md-4 mb-4">
@@ -1052,12 +827,13 @@
                         </div>
                         <h4>Catálogo 1</h4>
                         <p>Medicamentos generales, productos gastroprotectores, analgésicos y más.</p>
-                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogo1">
+                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalCatalogo1">
                             Ver Catálogo
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Catálogo 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="catalogo-card animate__animated animate__fadeInUp animate__delay-1s">
@@ -1066,21 +842,24 @@
                         </div>
                         <h4>Catálogo 2</h4>
                         <p>Suplementos nutricionales, antioxidantes, vitaminas y productos especializados.</p>
-                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogo2">
+                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalCatalogo2">
                             Ver Catálogo
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Catálogo de Vacunas -->
                 <div class="col-md-4 mb-4">
                     <div class="catalogo-card animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="catalogo-image">
-                            <img src="catalogo-vacunas/Catalogo Vacunas-1.jpeg" alt="Catálogo de Vacunas" class="catalogo-preview-img">
+                            <img src="catalogo-vacunas/Catalogo Vacunas-1.jpeg" alt="Catálogo de Vacunas"
+                                class="catalogo-preview-img">
                         </div>
                         <h4>Catálogo de Vacunas</h4>
                         <p>Vacunas para diferentes enfermedades, desde hepatitis hasta fiebre amarilla.</p>
-                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#modalCatalogoVacunas">
+                        <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalCatalogoVacunas">
                             Ver Catálogo
                         </button>
                     </div>
@@ -1111,26 +890,31 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row mt-5 pt-5">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="mb-4">¿Necesitas ayuda?</h3>
-                    <p>Nuestro equipo de farmacéuticos está disponible para asesorarte sobre el medicamento más adecuado para tus necesidades.</p>
-                    <p>Recuerda que algunos medicamentos requieren receta médica. Consulta siempre con un profesional de la salud.</p>
+                    <p>Nuestro equipo de farmacéuticos está disponible para asesorarte sobre el medicamento más adecuado
+                        para tus necesidades.</p>
+                    <p>Recuerda que algunos medicamentos requieren receta médica. Consulta siempre con un profesional de
+                        la salud.</p>
                 </div>
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h3 class="mb-4">Realiza tu pedido fácilmente</h3>
                     <p>Consulta nuestro catálogo y contáctanos directamente para realizar tu pedido.</p>
                     <p>Te atenderemos de inmediato y coordinaremos la entrega de tu pedido.</p>
-                    <a href="https://wa.me/50259167747?text=Hola,%20me%20interesa%20realizar%20un%20pedido%20de%20medicamentos" class="btn btn-whatsapp btn-lg mt-3" target="_blank">
+                    <a href="https://wa.me/50259167747?text=Hola,%20me%20interesa%20realizar%20un%20pedido%20de%20medicamentos"
+                        class="btn btn-whatsapp btn-lg mt-3" target="_blank">
                         <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <h3 class="mb-4">Agenda tu cita</h3>
-                    <p>¿Necesitas una consulta médica o asesoría personalizada? Agenda tu cita con nuestros profesionales de salud.</p>
+                    <p>¿Necesitas una consulta médica o asesoría personalizada? Agenda tu cita con nuestros
+                        profesionales de salud.</p>
                     <p>Atención personalizada y confidencial para tu tranquilidad.</p>
-                    <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" class="btn btn-whatsapp btn-lg mt-3" target="_blank">
+                    <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica"
+                        class="btn btn-whatsapp btn-lg mt-3" target="_blank">
                         <i class="fab fa-whatsapp"></i> Agendar Cita por WhatsApp
                     </a>
                 </div>
@@ -1144,14 +928,15 @@
             <div class="row">
                 <div class="col-md-6 mb-4 mb-md-0">
                     <h4>ServiMedic</h4>
-                    <p>Tu salud es nuestra prioridad. Ofrecemos medicamentos de calidad con el respaldo de profesionales de la salud.</p>
+                    <p>Tu salud es nuestra prioridad. Ofrecemos medicamentos de calidad con el respaldo de profesionales
+                        de la salud.</p>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
                     <h5>Enlaces rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="#inicio" class="text-light">Inicio</a></li>
                         <li><a href="#servicios" class="text-light">Servicios</a></li>
-                        <li><a href="#medicamentos" class="text-light">Medicamentos</a></li>
+
                         <li><a href="#catalogos" class="text-light">Catálogos</a></li>
                         <li><a href="#contacto" class="text-light">Contacto</a></li>
                     </ul>
@@ -1179,31 +964,36 @@
 
     <!-- WhatsApp Menu -->
     <div class="whatsapp-menu" id="whatsappMenu">
-        <a href="https://wa.me/50259167747?text=Hola,%20me%20interesa%20realizar%20un%20pedido%20de%20medicamentos" target="_blank">
+        <a href="https://wa.me/50259167747?text=Hola,%20me%20interesa%20realizar%20un%20pedido%20de%20medicamentos"
+            target="_blank">
             <i class="fab fa-whatsapp"></i> Pedidos
         </a>
         <a href="https://wa.me/50250525292?text=Hola,%20me%20interesa%20agendar%20una%20cita%20médica" target="_blank">
             <i class="fab fa-whatsapp"></i> Agenda de Citas
         </a>
-        <a href="https://wa.me/50247217618?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia" target="_blank">
+        <a href="https://wa.me/50247217618?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia"
+            target="_blank">
             <i class="fab fa-whatsapp"></i> Sueroterapia
         </a>
     </div>
 
     <!-- Modales para los catálogos -->
-    
+
     <!-- Modal Catálogo 1 -->
-    <div class="modal fade modal-catalogo" id="modalCatalogo1" tabindex="-1" aria-labelledby="modalCatalogo1Label" aria-hidden="true">
+    <div class="modal fade modal-catalogo" id="modalCatalogo1" tabindex="-1" aria-labelledby="modalCatalogo1Label"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCatalogo1Label">Catálogo 1 - Medicamentos Generales</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="carouselCatalogo1" class="carousel slide catalogo-carousel" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselCatalogo1" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                            <button type="button" data-bs-target="#carouselCatalogo1" data-bs-slide-to="0"
+                                class="active" aria-current="true"></button>
                             <button type="button" data-bs-target="#carouselCatalogo1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carouselCatalogo1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carouselCatalogo1" data-bs-slide-to="3"></button>
@@ -1244,125 +1034,165 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="catalogo1/Catalogo 1-1.jpeg" class="d-block w-100" alt="Página 1 del Catálogo 1" data-page="1">
+                                <img src="catalogo1/Catalogo 1-1.jpeg" class="d-block w-100"
+                                    alt="Página 1 del Catálogo 1" data-page="1">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-2.jpeg" class="d-block w-100" alt="Página 2 del Catálogo 1" data-page="2">
+                                <img src="catalogo1/Catalogo 1-2.jpeg" class="d-block w-100"
+                                    alt="Página 2 del Catálogo 1" data-page="2">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-3.jpeg" class="d-block w-100" alt="Página 3 del Catálogo 1" data-page="3">
+                                <img src="catalogo1/Catalogo 1-3.jpeg" class="d-block w-100"
+                                    alt="Página 3 del Catálogo 1" data-page="3">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-4.jpeg" class="d-block w-100" alt="Página 4 del Catálogo 1" data-page="4">
+                                <img src="catalogo1/Catalogo 1-4.jpeg" class="d-block w-100"
+                                    alt="Página 4 del Catálogo 1" data-page="4">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-5.jpeg" class="d-block w-100" alt="Página 5 del Catálogo 1" data-page="5">
+                                <img src="catalogo1/Catalogo 1-5.jpeg" class="d-block w-100"
+                                    alt="Página 5 del Catálogo 1" data-page="5">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-6.jpeg" class="d-block w-100" alt="Página 6 del Catálogo 1" data-page="6">
+                                <img src="catalogo1/Catalogo 1-6.jpeg" class="d-block w-100"
+                                    alt="Página 6 del Catálogo 1" data-page="6">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-7.jpeg" class="d-block w-100" alt="Página 7 del Catálogo 1" data-page="7">
+                                <img src="catalogo1/Catalogo 1-7.jpeg" class="d-block w-100"
+                                    alt="Página 7 del Catálogo 1" data-page="7">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-8.jpeg" class="d-block w-100" alt="Página 8 del Catálogo 1" data-page="8">
+                                <img src="catalogo1/Catalogo 1-8.jpeg" class="d-block w-100"
+                                    alt="Página 8 del Catálogo 1" data-page="8">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-9.jpeg" class="d-block w-100" alt="Página 9 del Catálogo 1" data-page="9">
+                                <img src="catalogo1/Catalogo 1-9.jpeg" class="d-block w-100"
+                                    alt="Página 9 del Catálogo 1" data-page="9">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-10.jpeg" class="d-block w-100" alt="Página 10 del Catálogo 1" data-page="10">
+                                <img src="catalogo1/Catalogo 1-10.jpeg" class="d-block w-100"
+                                    alt="Página 10 del Catálogo 1" data-page="10">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-11.jpeg" class="d-block w-100" alt="Página 11 del Catálogo 1" data-page="11">
+                                <img src="catalogo1/Catalogo 1-11.jpeg" class="d-block w-100"
+                                    alt="Página 11 del Catálogo 1" data-page="11">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-12.jpeg" class="d-block w-100" alt="Página 12 del Catálogo 1" data-page="12">
+                                <img src="catalogo1/Catalogo 1-12.jpeg" class="d-block w-100"
+                                    alt="Página 12 del Catálogo 1" data-page="12">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-13.jpeg" class="d-block w-100" alt="Página 13 del Catálogo 1" data-page="13">
+                                <img src="catalogo1/Catalogo 1-13.jpeg" class="d-block w-100"
+                                    alt="Página 13 del Catálogo 1" data-page="13">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-14.jpeg" class="d-block w-100" alt="Página 14 del Catálogo 1" data-page="14">
+                                <img src="catalogo1/Catalogo 1-14.jpeg" class="d-block w-100"
+                                    alt="Página 14 del Catálogo 1" data-page="14">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-15.jpeg" class="d-block w-100" alt="Página 15 del Catálogo 1" data-page="15">
+                                <img src="catalogo1/Catalogo 1-15.jpeg" class="d-block w-100"
+                                    alt="Página 15 del Catálogo 1" data-page="15">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-16.jpeg" class="d-block w-100" alt="Página 16 del Catálogo 1" data-page="16">
+                                <img src="catalogo1/Catalogo 1-16.jpeg" class="d-block w-100"
+                                    alt="Página 16 del Catálogo 1" data-page="16">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-17.jpeg" class="d-block w-100" alt="Página 17 del Catálogo 1" data-page="17">
+                                <img src="catalogo1/Catalogo 1-17.jpeg" class="d-block w-100"
+                                    alt="Página 17 del Catálogo 1" data-page="17">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-18.jpeg" class="d-block w-100" alt="Página 18 del Catálogo 1" data-page="18">
+                                <img src="catalogo1/Catalogo 1-18.jpeg" class="d-block w-100"
+                                    alt="Página 18 del Catálogo 1" data-page="18">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-19.jpeg" class="d-block w-100" alt="Página 19 del Catálogo 1" data-page="19">
+                                <img src="catalogo1/Catalogo 1-19.jpeg" class="d-block w-100"
+                                    alt="Página 19 del Catálogo 1" data-page="19">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-20.jpeg" class="d-block w-100" alt="Página 20 del Catálogo 1" data-page="20">
+                                <img src="catalogo1/Catalogo 1-20.jpeg" class="d-block w-100"
+                                    alt="Página 20 del Catálogo 1" data-page="20">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-21.jpeg" class="d-block w-100" alt="Página 21 del Catálogo 1" data-page="21">
+                                <img src="catalogo1/Catalogo 1-21.jpeg" class="d-block w-100"
+                                    alt="Página 21 del Catálogo 1" data-page="21">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-22.jpeg" class="d-block w-100" alt="Página 22 del Catálogo 1" data-page="22">
+                                <img src="catalogo1/Catalogo 1-22.jpeg" class="d-block w-100"
+                                    alt="Página 22 del Catálogo 1" data-page="22">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-23.jpeg" class="d-block w-100" alt="Página 23 del Catálogo 1" data-page="23">
+                                <img src="catalogo1/Catalogo 1-23.jpeg" class="d-block w-100"
+                                    alt="Página 23 del Catálogo 1" data-page="23">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-24.jpeg" class="d-block w-100" alt="Página 24 del Catálogo 1" data-page="24">
+                                <img src="catalogo1/Catalogo 1-24.jpeg" class="d-block w-100"
+                                    alt="Página 24 del Catálogo 1" data-page="24">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-25.jpeg" class="d-block w-100" alt="Página 25 del Catálogo 1" data-page="25">
+                                <img src="catalogo1/Catalogo 1-25.jpeg" class="d-block w-100"
+                                    alt="Página 25 del Catálogo 1" data-page="25">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-26.jpeg" class="d-block w-100" alt="Página 26 del Catálogo 1" data-page="26">
+                                <img src="catalogo1/Catalogo 1-26.jpeg" class="d-block w-100"
+                                    alt="Página 26 del Catálogo 1" data-page="26">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-27.jpeg" class="d-block w-100" alt="Página 27 del Catálogo 1" data-page="27">
+                                <img src="catalogo1/Catalogo 1-27.jpeg" class="d-block w-100"
+                                    alt="Página 27 del Catálogo 1" data-page="27">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-28.jpeg" class="d-block w-100" alt="Página 28 del Catálogo 1" data-page="28">
+                                <img src="catalogo1/Catalogo 1-28.jpeg" class="d-block w-100"
+                                    alt="Página 28 del Catálogo 1" data-page="28">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-29.jpeg" class="d-block w-100" alt="Página 29 del Catálogo 1" data-page="29">
+                                <img src="catalogo1/Catalogo 1-29.jpeg" class="d-block w-100"
+                                    alt="Página 29 del Catálogo 1" data-page="29">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-30.jpeg" class="d-block w-100" alt="Página 30 del Catálogo 1" data-page="30">
+                                <img src="catalogo1/Catalogo 1-30.jpeg" class="d-block w-100"
+                                    alt="Página 30 del Catálogo 1" data-page="30">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-31.jpeg" class="d-block w-100" alt="Página 31 del Catálogo 1" data-page="31">
+                                <img src="catalogo1/Catalogo 1-31.jpeg" class="d-block w-100"
+                                    alt="Página 31 del Catálogo 1" data-page="31">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-32.jpeg" class="d-block w-100" alt="Página 32 del Catálogo 1" data-page="32">
+                                <img src="catalogo1/Catalogo 1-32.jpeg" class="d-block w-100"
+                                    alt="Página 32 del Catálogo 1" data-page="32">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-33.jpeg" class="d-block w-100" alt="Página 33 del Catálogo 1" data-page="33">
+                                <img src="catalogo1/Catalogo 1-33.jpeg" class="d-block w-100"
+                                    alt="Página 33 del Catálogo 1" data-page="33">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-34.jpeg" class="d-block w-100" alt="Página 34 del Catálogo 1" data-page="34">
+                                <img src="catalogo1/Catalogo 1-34.jpeg" class="d-block w-100"
+                                    alt="Página 34 del Catálogo 1" data-page="34">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-35.jpeg" class="d-block w-100" alt="Página 35 del Catálogo 1" data-page="35">
+                                <img src="catalogo1/Catalogo 1-35.jpeg" class="d-block w-100"
+                                    alt="Página 35 del Catálogo 1" data-page="35">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-36.jpeg" class="d-block w-100" alt="Página 36 del Catálogo 1" data-page="36">
+                                <img src="catalogo1/Catalogo 1-36.jpeg" class="d-block w-100"
+                                    alt="Página 36 del Catálogo 1" data-page="36">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-37.jpeg" class="d-block w-100" alt="Página 37 del Catálogo 1" data-page="37">
+                                <img src="catalogo1/Catalogo 1-37.jpeg" class="d-block w-100"
+                                    alt="Página 37 del Catálogo 1" data-page="37">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo1/Catalogo 1-38.jpeg" class="d-block w-100" alt="Página 38 del Catálogo 1" data-page="38">
+                                <img src="catalogo1/Catalogo 1-38.jpeg" class="d-block w-100"
+                                    alt="Página 38 del Catálogo 1" data-page="38">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogo1" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogo1"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Anterior</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogo1" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogo1"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Siguiente</span>
                         </button>
@@ -1377,19 +1207,22 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Catálogo 2 -->
-    <div class="modal fade modal-catalogo" id="modalCatalogo2" tabindex="-1" aria-labelledby="modalCatalogo2Label" aria-hidden="true">
+    <div class="modal fade modal-catalogo" id="modalCatalogo2" tabindex="-1" aria-labelledby="modalCatalogo2Label"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCatalogo2Label">Catálogo 2 - Productos Especializados</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="carouselCatalogo2" class="carousel slide catalogo-carousel" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselCatalogo2" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselCatalogo2" data-bs-slide-to="0"
+                                class="active"></button>
                             <button type="button" data-bs-target="#carouselCatalogo2" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carouselCatalogo2" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carouselCatalogo2" data-bs-slide-to="3"></button>
@@ -1415,77 +1248,101 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="catalogo2/Catalogo 2.pdf-1.jpeg" class="d-block w-100" alt="Página 1 del Catálogo 2" data-page="1">
+                                <img src="catalogo2/Catalogo 2.pdf-1.jpeg" class="d-block w-100"
+                                    alt="Página 1 del Catálogo 2" data-page="1">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-2.jpeg" class="d-block w-100" alt="Página 2 del Catálogo 2" data-page="2">
+                                <img src="catalogo2/Catalogo 2.pdf-2.jpeg" class="d-block w-100"
+                                    alt="Página 2 del Catálogo 2" data-page="2">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-3.jpeg" class="d-block w-100" alt="Página 3 del Catálogo 2" data-page="3">
+                                <img src="catalogo2/Catalogo 2.pdf-3.jpeg" class="d-block w-100"
+                                    alt="Página 3 del Catálogo 2" data-page="3">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-4.jpeg" class="d-block w-100" alt="Página 4 del Catálogo 2" data-page="4">
-                            </div>                            
-                            <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-5.jpeg" class="d-block w-100" alt="Página 5 del Catálogo 2" data-page="5">
+                                <img src="catalogo2/Catalogo 2.pdf-4.jpeg" class="d-block w-100"
+                                    alt="Página 4 del Catálogo 2" data-page="4">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-6.jpeg" class="d-block w-100" alt="Página 6 del Catálogo 2" data-page="6">
+                                <img src="catalogo2/Catalogo 2.pdf-5.jpeg" class="d-block w-100"
+                                    alt="Página 5 del Catálogo 2" data-page="5">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-7.jpeg" class="d-block w-100" alt="Página 7 del Catálogo 2" data-page="7">
+                                <img src="catalogo2/Catalogo 2.pdf-6.jpeg" class="d-block w-100"
+                                    alt="Página 6 del Catálogo 2" data-page="6">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-8.jpeg" class="d-block w-100" alt="Página 8 del Catálogo 2" data-page="8">
+                                <img src="catalogo2/Catalogo 2.pdf-7.jpeg" class="d-block w-100"
+                                    alt="Página 7 del Catálogo 2" data-page="7">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-9.jpeg" class="d-block w-100" alt="Página 9 del Catálogo 2" data-page="9">
+                                <img src="catalogo2/Catalogo 2.pdf-8.jpeg" class="d-block w-100"
+                                    alt="Página 8 del Catálogo 2" data-page="8">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-10.jpeg" class="d-block w-100" alt="Página 10 del Catálogo 2" data-page="10">
+                                <img src="catalogo2/Catalogo 2.pdf-9.jpeg" class="d-block w-100"
+                                    alt="Página 9 del Catálogo 2" data-page="9">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-11.jpeg" class="d-block w-100" alt="Página 11 del Catálogo 2" data-page="11">
+                                <img src="catalogo2/Catalogo 2.pdf-10.jpeg" class="d-block w-100"
+                                    alt="Página 10 del Catálogo 2" data-page="10">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-12.jpeg" class="d-block w-100" alt="Página 12 del Catálogo 2" data-page="12">
+                                <img src="catalogo2/Catalogo 2.pdf-11.jpeg" class="d-block w-100"
+                                    alt="Página 11 del Catálogo 2" data-page="11">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-13.jpeg" class="d-block w-100" alt="Página 13 del Catálogo 2" data-page="13">
+                                <img src="catalogo2/Catalogo 2.pdf-12.jpeg" class="d-block w-100"
+                                    alt="Página 12 del Catálogo 2" data-page="12">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-14.jpeg" class="d-block w-100" alt="Página 14 del Catálogo 2" data-page="14">
+                                <img src="catalogo2/Catalogo 2.pdf-13.jpeg" class="d-block w-100"
+                                    alt="Página 13 del Catálogo 2" data-page="13">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-15.jpeg" class="d-block w-100" alt="Página 15 del Catálogo 2" data-page="15">
+                                <img src="catalogo2/Catalogo 2.pdf-14.jpeg" class="d-block w-100"
+                                    alt="Página 14 del Catálogo 2" data-page="14">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-16.jpeg" class="d-block w-100" alt="Página 16 del Catálogo 2" data-page="16">
+                                <img src="catalogo2/Catalogo 2.pdf-15.jpeg" class="d-block w-100"
+                                    alt="Página 15 del Catálogo 2" data-page="15">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-17.jpeg" class="d-block w-100" alt="Página 17 del Catálogo 2" data-page="17">
+                                <img src="catalogo2/Catalogo 2.pdf-16.jpeg" class="d-block w-100"
+                                    alt="Página 16 del Catálogo 2" data-page="16">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-18.jpeg" class="d-block w-100" alt="Página 18 del Catálogo 2" data-page="18">
+                                <img src="catalogo2/Catalogo 2.pdf-17.jpeg" class="d-block w-100"
+                                    alt="Página 17 del Catálogo 2" data-page="17">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-19.jpeg" class="d-block w-100" alt="Página 19 del Catálogo 2" data-page="19">
+                                <img src="catalogo2/Catalogo 2.pdf-18.jpeg" class="d-block w-100"
+                                    alt="Página 18 del Catálogo 2" data-page="18">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-20.jpeg" class="d-block w-100" alt="Página 20 del Catálogo 2" data-page="20">
+                                <img src="catalogo2/Catalogo 2.pdf-19.jpeg" class="d-block w-100"
+                                    alt="Página 19 del Catálogo 2" data-page="19">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-21.jpeg" class="d-block w-100" alt="Página 21 del Catálogo 2" data-page="21">
+                                <img src="catalogo2/Catalogo 2.pdf-20.jpeg" class="d-block w-100"
+                                    alt="Página 20 del Catálogo 2" data-page="20">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo2/Catalogo 2.pdf-22.jpeg" class="d-block w-100" alt="Página 22 del Catálogo 2" data-page="22">
+                                <img src="catalogo2/Catalogo 2.pdf-21.jpeg" class="d-block w-100"
+                                    alt="Página 21 del Catálogo 2" data-page="21">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="catalogo2/Catalogo 2.pdf-22.jpeg" class="d-block w-100"
+                                    alt="Página 22 del Catálogo 2" data-page="22">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogo2" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogo2"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Anterior</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogo2" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogo2"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Siguiente</span>
                         </button>
@@ -1500,111 +1357,158 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Catálogo de Vacunas -->
-    <div class="modal fade modal-catalogo" id="modalCatalogoVacunas" tabindex="-1" aria-labelledby="modalCatalogoVacunasLabel" aria-hidden="true">
+    <div class="modal fade modal-catalogo" id="modalCatalogoVacunas" tabindex="-1"
+        aria-labelledby="modalCatalogoVacunasLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCatalogoVacunasLabel">Catálogo de Vacunas</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="carouselCatalogoVacunas" class="carousel slide catalogo-carousel" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="4"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="5"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="6"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="7"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="8"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="9"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="10"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="11"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="12"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="13"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="14"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="15"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="16"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="17"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="18"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="19"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="20"></button>
-                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="21"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide-to="0"
+                                class="active"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="4"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="5"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="6"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="7"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="8"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="9"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="10"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="11"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="12"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="13"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="14"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="15"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="16"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="17"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="18"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="19"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="20"></button>
+                            <button type="button" data-bs-target="#carouselCatalogoVacunas"
+                                data-bs-slide-to="21"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-1.jpeg" class="d-block w-100" alt="Página 1 del Catálogo de Vacunas" data-page="1">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-1.jpeg" class="d-block w-100"
+                                    alt="Página 1 del Catálogo de Vacunas" data-page="1">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-2.jpeg" class="d-block w-100" alt="Página 2 del Catálogo de Vacunas" data-page="2">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-2.jpeg" class="d-block w-100"
+                                    alt="Página 2 del Catálogo de Vacunas" data-page="2">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-3.jpeg" class="d-block w-100" alt="Página 3 del Catálogo de Vacunas" data-page="3">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-3.jpeg" class="d-block w-100"
+                                    alt="Página 3 del Catálogo de Vacunas" data-page="3">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-4.jpeg" class="d-block w-100" alt="Página 4 del Catálogo de Vacunas" data-page="4">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-4.jpeg" class="d-block w-100"
+                                    alt="Página 4 del Catálogo de Vacunas" data-page="4">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-5.jpeg" class="d-block w-100" alt="Página 5 del Catálogo de Vacunas" data-page="5">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-5.jpeg" class="d-block w-100"
+                                    alt="Página 5 del Catálogo de Vacunas" data-page="5">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-6.jpeg" class="d-block w-100" alt="Página 6 del Catálogo de Vacunas" data-page="6">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-6.jpeg" class="d-block w-100"
+                                    alt="Página 6 del Catálogo de Vacunas" data-page="6">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-7.jpeg" class="d-block w-100" alt="Página 7 del Catálogo de Vacunas" data-page="7">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-7.jpeg" class="d-block w-100"
+                                    alt="Página 7 del Catálogo de Vacunas" data-page="7">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-8.jpeg" class="d-block w-100" alt="Página 8 del Catálogo de Vacunas" data-page="8">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-8.jpeg" class="d-block w-100"
+                                    alt="Página 8 del Catálogo de Vacunas" data-page="8">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-9.jpeg" class="d-block w-100" alt="Página 9 del Catálogo de Vacunas" data-page="9">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-9.jpeg" class="d-block w-100"
+                                    alt="Página 9 del Catálogo de Vacunas" data-page="9">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-10.jpeg" class="d-block w-100" alt="Página 10 del Catálogo de Vacunas" data-page="10">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-10.jpeg" class="d-block w-100"
+                                    alt="Página 10 del Catálogo de Vacunas" data-page="10">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-11.jpeg" class="d-block w-100" alt="Página 11 del Catálogo de Vacunas" data-page="11">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-11.jpeg" class="d-block w-100"
+                                    alt="Página 11 del Catálogo de Vacunas" data-page="11">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-12.jpeg" class="d-block w-100" alt="Página 12 del Catálogo de Vacunas" data-page="12">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-12.jpeg" class="d-block w-100"
+                                    alt="Página 12 del Catálogo de Vacunas" data-page="12">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-13.jpeg" class="d-block w-100" alt="Página 13 del Catálogo de Vacunas" data-page="13">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-13.jpeg" class="d-block w-100"
+                                    alt="Página 13 del Catálogo de Vacunas" data-page="13">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-14.jpeg" class="d-block w-100" alt="Página 14 del Catálogo de Vacunas" data-page="14">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-14.jpeg" class="d-block w-100"
+                                    alt="Página 14 del Catálogo de Vacunas" data-page="14">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-15.jpeg" class="d-block w-100" alt="Página 15 del Catálogo de Vacunas" data-page="15">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-15.jpeg" class="d-block w-100"
+                                    alt="Página 15 del Catálogo de Vacunas" data-page="15">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-16.jpeg" class="d-block w-100" alt="Página 16 del Catálogo de Vacunas" data-page="16">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-16.jpeg" class="d-block w-100"
+                                    alt="Página 16 del Catálogo de Vacunas" data-page="16">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-17.jpeg" class="d-block w-100" alt="Página 17 del Catálogo de Vacunas" data-page="17">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-17.jpeg" class="d-block w-100"
+                                    alt="Página 17 del Catálogo de Vacunas" data-page="17">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-18.jpeg" class="d-block w-100" alt="Página 18 del Catálogo de Vacunas" data-page="18">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-18.jpeg" class="d-block w-100"
+                                    alt="Página 18 del Catálogo de Vacunas" data-page="18">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-19.jpeg" class="d-block w-100" alt="Página 19 del Catálogo de Vacunas" data-page="19">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-19.jpeg" class="d-block w-100"
+                                    alt="Página 19 del Catálogo de Vacunas" data-page="19">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-20.jpeg" class="d-block w-100" alt="Página 20 del Catálogo de Vacunas" data-page="20">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-20.jpeg" class="d-block w-100"
+                                    alt="Página 20 del Catálogo de Vacunas" data-page="20">
                             </div>
                             <div class="carousel-item">
-                                <img src="catalogo-vacunas/Catalogo Vacunas-21.jpeg" class="d-block w-100" alt="Página 21 del Catálogo de Vacunas" data-page="21">
+                                <img src="catalogo-vacunas/Catalogo Vacunas-21.jpeg" class="d-block w-100"
+                                    alt="Página 21 del Catálogo de Vacunas" data-page="21">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCatalogoVacunas"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Anterior</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogoVacunas" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCatalogoVacunas"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Siguiente</span>
                         </button>
@@ -1622,29 +1526,29 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Pantalla de bienvenida
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
                 document.getElementById('welcome-screen').classList.add('hidden');
             }, 3000);
         });
-        
+
         // También ocultar al hacer scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 50) {
                 document.getElementById('welcome-screen').classList.add('hidden');
             }
         });
-        
+
         // Función para redirigir a WhatsApp con el medicamento seleccionado
         function pedirMedicamento(medicamento) {
             const mensaje = `Hola, me interesa realizar un pedido de: ${medicamento}`;
             const url = `https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
-        
+
         // Smooth scroll para los enlaces del navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1659,11 +1563,11 @@
                 }
             });
         });
-        
+
         // Animación al hacer scroll
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const elementos = document.querySelectorAll('.animate__animated');
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1671,20 +1575,20 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             elementos.forEach(el => {
                 observer.observe(el);
             });
         });
-        
+
         // Funcionalidad de "Ver más" medicamentos
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const verMasBtn = document.getElementById('verMasMedicamentos');
             const medicamentosOcultos = document.querySelectorAll('.medicamento-oculto');
             let mostrando = false;
-            
+
             if (verMasBtn) {
-                verMasBtn.addEventListener('click', function() {
+                verMasBtn.addEventListener('click', function () {
                     if (!mostrando) {
                         // Mostrar medicamentos ocultos
                         medicamentosOcultos.forEach((med, index) => {
@@ -1693,7 +1597,7 @@
                                 med.classList.add('animate__animated', 'animate__fadeIn');
                             }, index * 100);
                         });
-                        
+
                         // Cambiar texto del botón
                         verMasBtn.innerHTML = 'Ver menos medicamentos <i class="fas fa-chevron-up"></i>';
                         mostrando = true;
@@ -1703,11 +1607,11 @@
                             med.style.display = 'none';
                             med.classList.remove('animate__animated', 'animate__fadeIn');
                         });
-                        
+
                         // Cambiar texto del botón
                         verMasBtn.innerHTML = 'Ver más medicamentos <i class="fas fa-chevron-down"></i>';
                         mostrando = false;
-                        
+
                         // Hacer scroll a la sección de medicamentos
                         document.getElementById('medicamentos').scrollIntoView({
                             behavior: 'smooth'
@@ -1716,82 +1620,82 @@
                 });
             }
         });
-        
+
         // WhatsApp Menu Toggle
-        document.getElementById('whatsappFloatingBtn').addEventListener('click', function() {
+        document.getElementById('whatsappFloatingBtn').addEventListener('click', function () {
             const menu = document.getElementById('whatsappMenu');
             menu.classList.toggle('show');
         });
-        
+
         // Cerrar menú de WhatsApp al hacer clic fuera
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const menu = document.getElementById('whatsappMenu');
             const btn = document.getElementById('whatsappFloatingBtn');
-            
+
             if (!menu.contains(event.target) && !btn.contains(event.target)) {
                 menu.classList.remove('show');
             }
         });
-        
+
         // Función para actualizar enlaces de WhatsApp en catálogos
         function actualizarEnlaceWhatsAppCatalogo(carouselId, catalogoNum) {
             const carousel = document.getElementById(carouselId);
             const activeItem = carousel.querySelector('.carousel-item.active');
             const page = activeItem ? activeItem.querySelector('img').getAttribute('data-page') : '1';
-            
+
             // Buscar el botón de WhatsApp dentro del modal actual
             const modal = carousel.closest('.modal');
             const btnWhatsApp = modal.querySelector('.consultar-catalogo');
-            
+
             if (btnWhatsApp) {
                 const mensaje = `Hola, me interesa consultar sobre un producto del Catálogo ${catalogoNum}, página ${page}`;
                 btnWhatsApp.href = `https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`;
             }
         }
-        
+
         // Actualizar enlaces de WhatsApp al cambiar de página en los catálogos
         document.querySelectorAll('.catalogo-carousel').forEach(carousel => {
-            carousel.addEventListener('slid.bs.carousel', function() {
+            carousel.addEventListener('slid.bs.carousel', function () {
                 const carouselId = this.id;
                 let catalogoNum = '';
-                
+
                 if (carouselId === 'carouselCatalogo1') catalogoNum = '1';
                 else if (carouselId === 'carouselCatalogo2') catalogoNum = '2';
                 else if (carouselId === 'carouselCatalogoVacunas') catalogoNum = 'Vacunas';
-                
+
                 if (catalogoNum) {
                     actualizarEnlaceWhatsAppCatalogo(carouselId, catalogoNum);
                 }
             });
         });
-        
+
         // Actualizar enlaces de WhatsApp al abrir los modales de catálogos
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Catálogo 1
             const modalCatalogo1 = document.getElementById('modalCatalogo1');
             if (modalCatalogo1) {
-                modalCatalogo1.addEventListener('shown.bs.modal', function() {
+                modalCatalogo1.addEventListener('shown.bs.modal', function () {
                     actualizarEnlaceWhatsAppCatalogo('carouselCatalogo1', '1');
                 });
             }
-            
+
             // Catálogo 2
             const modalCatalogo2 = document.getElementById('modalCatalogo2');
             if (modalCatalogo2) {
-                modalCatalogo2.addEventListener('shown.bs.modal', function() {
+                modalCatalogo2.addEventListener('shown.bs.modal', function () {
                     actualizarEnlaceWhatsAppCatalogo('carouselCatalogo2', '2');
                 });
             }
-            
+
             // Catálogo Vacunas
             const modalCatalogoVacunas = document.getElementById('modalCatalogoVacunas');
             if (modalCatalogoVacunas) {
-                modalCatalogoVacunas.addEventListener('shown.bs.modal', function() {
+                modalCatalogoVacunas.addEventListener('shown.bs.modal', function () {
                     actualizarEnlaceWhatsAppCatalogo('carouselCatalogoVacunas', 'Vacunas');
                 });
             }
         });
-        
+
         // Nueva función: compartir la imagen activa del catálogo por WhatsApp (si el dispositivo lo permite)
         async function compartirCatalogoPorWhatsApp(btn) {
             const modal = btn.closest('.modal');
@@ -1822,11 +1726,11 @@
             const url = `https://wa.me/50259167747?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
-        
+
         // Vincular el click de los botones de "Consultar por WhatsApp" para compartir imagen + mensaje
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.consultar-catalogo').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     compartirCatalogoPorWhatsApp(this);
                 });
@@ -1834,4 +1738,5 @@
         });
     </script>
 </body>
+
 </html>
