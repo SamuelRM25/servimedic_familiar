@@ -200,13 +200,11 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            height: 80vh;
-            max-height: 800px;
+            min-height: 500px;
         }
 
         .small-carousel .carousel-item {
-            height: 80vh;
-            max-height: 800px;
+            min-height: 500px;
         }
 
         .small-carousel .carousel-item img {
@@ -583,8 +581,19 @@
                 font-size: 1.2rem;
             }
 
+            .small-carousel {
+                min-height: 500px;
+            }
+
+            .small-carousel .carousel-item {
+                min-height: 500px;
+            }
+
             .small-carousel .carousel-item img {
-                height: 250px;
+                min-height: 500px;
+                max-height: 600px;
+                object-fit: contain;
+                padding: 10px;
             }
 
             .contact-info {
@@ -772,23 +781,23 @@
                     <button type="button" data-bs-target="#smallCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#smallCarousel" data-bs-slide-to="2"></button>
                 </div>
-                <div class="carousel-inner" style="max-height: 80vh;">
+                <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox"
-                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios"
-                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico"
-                                style="max-height: 70vh; width: 90%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                 </div>
