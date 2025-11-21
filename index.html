@@ -1705,7 +1705,7 @@
             }
         });
 
-        // Nueva función: compartir imagen con WhatsApp (optimizada para móviles)
+        // Función optimizada para compartir imagen con WhatsApp (automática en móviles)
         async function compartirCatalogoPorWhatsApp(btn) {
             const modal = btn.closest('.modal');
             const carousel = modal ? modal.querySelector('.catalogo-carousel') : null;
@@ -1725,11 +1725,10 @@
                 const blob = await response.blob();
                 const fileName = imgSrc.split('/').pop() || 'catalogo.jpg';
 
-                // PRIORIDAD 1: Intentar Web Share API (funciona en móviles y comparte directamente a WhatsApp)
+                // MÓVILES: Usar Web Share API (la imagen se adjunta automáticamente)
                 if (navigator.share && navigator.canShare) {
                     const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
 
-                    // Verificar si puede compartir archivos
                     if (navigator.canShare({ files: [file] })) {
                         try {
                             await navigator.share({
@@ -1737,16 +1736,14 @@
                                 title: 'Catálogo ServiMedic',
                                 text: mensaje
                             });
-                            // Si llegó aquí, el compartir fue exitoso
                             return;
                         } catch (shareErr) {
-                            // Usuario canceló o falló el compartir
-                            console.log('Share cancelado o error:', shareErr);
+                            console.log('Share cancelado:', shareErr);
                         }
                     }
                 }
 
-                // PRIORIDAD 2: Copiar al portapapeles (navegadores modernos de escritorio)
+                // ESCRITORIO: Copiar al portapapeles y abrir WhatsApp automáticamente
                 if (navigator.clipboard && navigator.clipboard.write) {
                     try {
                         await navigator.clipboard.write([
@@ -1754,51 +1751,19 @@
                                 [blob.type]: blob
                             })
                         ]);
-
-                        // Mostrar instrucciones claras
-                        const confirmacion = confirm(
-                            '✅ Imagen copiada al portapapeles.\n\n' +
-                            '📱 WhatsApp se abrirá en una nueva ventana.\n\n' +
-                            '👉 Presiona Ctrl+V (Windows) o Cmd+V (Mac) para pegar la imagen en el chat.\n\n' +
-                            '¿Abrir WhatsApp ahora?'
-                        );
-
-                        if (confirmacion) {
-                            window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
-                        }
+                        // Abrir WhatsApp automáticamente sin confirmación
+                        window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
                         return;
                     } catch (clipErr) {
-                        console.error('Error al copiar al portapapeles:', clipErr);
+                        console.error('Error al copiar:', clipErr);
                     }
                 }
 
-                // FALLBACK: Si nada funciona, intentar descargar la imagen
-                const downloadLink = document.createElement('a');
-                downloadLink.href = URL.createObjectURL(blob);
-                downloadLink.download = fileName;
-                downloadLink.style.display = 'none';
-                document.body.appendChild(downloadLink);
-
-                alert(
-                    '📥 La imagen se descargará automáticamente.\n\n' +
-                    '1️⃣ Busca la imagen en tu carpeta de descargas\n' +
-                    '2️⃣ Abre WhatsApp (se abrirá ahora)\n' +
-                    '3️⃣ Arrastra la imagen al chat o usa el botón de adjuntar'
-                );
-
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-                URL.revokeObjectURL(downloadLink.href);
-
-                // Abrir WhatsApp después de un breve delay
-                setTimeout(() => {
-                    window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
-                }, 1000);
+                // FALLBACK: Abrir WhatsApp directamente
+                window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
 
             } catch (err) {
-                console.error('Error general:', err);
-                // Último recurso: solo abrir WhatsApp con el mensaje
-                alert('⚠️ No se pudo procesar la imagen.\n\nSe abrirá WhatsApp con el mensaje.');
+                console.error('Error:', err);
                 window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
             }
         }
