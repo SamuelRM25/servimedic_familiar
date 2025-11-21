@@ -811,7 +811,7 @@
                 </button>
             </div>
             <div class="text-center mt-4">
-                <a href="https://wa.me/50252148836?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia"
+                <a href="https://wa.me/50247217618?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sueroterapia"
                     class="btn btn-whatsapp btn-lg" target="_blank">
                     <i class="fab fa-whatsapp"></i> Consultar por SueroTerapia
                 </a>
@@ -1705,7 +1705,7 @@
             }
         });
 
-        // Nueva función: compartir la imagen activa del catálogo por WhatsApp (si el dispositivo lo permite)
+        // Nueva función: copiar imagen al portapapeles y abrir WhatsApp
         async function compartirCatalogoPorWhatsApp(btn) {
             const modal = btn.closest('.modal');
             const carousel = modal ? modal.querySelector('.catalogo-carousel') : null;
@@ -1714,25 +1714,47 @@
             const imgSrc = imgEl ? imgEl.getAttribute('src') : null;
             const mensaje = 'Hola, me interesa realizar un pedido';
 
-            try {
-                if (imgSrc && navigator.canShare && navigator.canShare({ files: [] })) {
-                    const resp = await fetch(imgSrc);
-                    const blob = await resp.blob();
-                    const fileName = (imgSrc.split('/').pop() || 'catalogo.jpg');
-                    const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+            // Intentar copiar la imagen al portapapeles
+            let imagenCopiada = false;
+            if (imgSrc) {
+                try {
+                    // Convertir la imagen a blob
+                    const response = await fetch(imgSrc);
+                    const blob = await response.blob();
 
-                    await navigator.share({
-                        files: [file],
-                        text: mensaje
-                    });
-                    return;
+                    // Copiar la imagen al portapapeles
+                    await navigator.clipboard.write([
+                        new ClipboardItem({
+                            [blob.type]: blob
+                        })
+                    ]);
+
+                    imagenCopiada = true;
+
+                    // Mostrar notificación al usuario
+                    alert('✅ Imagen copiada al portapapeles. Ahora puedes pegarla en WhatsApp (Ctrl+V o Cmd+V)');
+                } catch (err) {
+                    console.error('Error al copiar imagen:', err);
+                    // Si falla, intentar con el método de compartir
+                    try {
+                        if (navigator.canShare && navigator.canShare({ files: [] })) {
+                            const fileName = (imgSrc.split('/').pop() || 'catalogo.jpg');
+                            const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+
+                            await navigator.share({
+                                files: [file],
+                                text: mensaje
+                            });
+                            return;
+                        }
+                    } catch (shareErr) {
+                        console.error('Error al compartir:', shareErr);
+                    }
                 }
-            } catch (err) {
-                // Fallback si falla el share
             }
 
-            const texto = imgSrc ? `${mensaje}\n${imgSrc}` : mensaje;
-            const url = `https://wa.me/50259167747?text=${encodeURIComponent(texto)}`;
+            // Abrir WhatsApp con el mensaje
+            const url = `https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
 
