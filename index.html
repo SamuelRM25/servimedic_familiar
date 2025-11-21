@@ -664,6 +664,59 @@
             display: flex;
         }
 
+        /* Notificación Toast */
+        .toast-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            z-index: 3000;
+            text-align: center;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInOut 2.5s ease forwards;
+        }
+
+        .toast-notification i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #25D366;
+        }
+
+        .toast-notification p {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+
+            15% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+
+            85% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+        }
+
         /* Menú de opciones de catálogo */
         .catalogo-options-menu {
             position: fixed;
@@ -1678,6 +1731,13 @@
         </div>
     </div>
 
+    <!-- Notificación Toast -->
+    <div id="pasteToast" class="toast-notification">
+        <i class="fas fa-paste"></i>
+        <p>¡Imagen copiada!</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">Presiona PEGAR en el chat</p>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1850,78 +1910,29 @@
             }
         });
 
-        // Variables globales para el menú de opciones
-        let currentImageData = null;
-
-        // Función para mostrar el menú de opciones
-        function mostrarMenuOpciones(btn) {
+        // Función principal: Copiar imagen, notificar y abrir WhatsApp
+        async function compartirCatalogoPorWhatsApp(btn) {
             const modal = btn.closest('.modal');
             const carousel = modal ? modal.querySelector('.catalogo-carousel') : null;
             const activeItem = carousel ? carousel.querySelector('.carousel-item.active') : null;
             const imgEl = activeItem ? activeItem.querySelector('img') : null;
             const imgSrc = imgEl ? imgEl.getAttribute('src') : null;
+            const mensaje = 'Hola, me interesa realizar un pedido';
 
             if (!imgSrc) {
-                window.open(`https://wa.me/50259167747?text=${encodeURIComponent('Hola, me interesa realizar un pedido')}`, '_blank');
+                window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
                 return;
             }
 
-            // Guardar datos de la imagen actual
-            currentImageData = { imgSrc };
-
-            // Mostrar el menú
-            document.getElementById('catalogoOptionsMenu').classList.add('show');
-        }
-
-        // Función para ocultar el menú
-        function ocultarMenuOpciones() {
-            document.getElementById('catalogoOptionsMenu').classList.remove('show');
-            currentImageData = null;
-        }
-
-        // Opción 1: Enviar imagen por WhatsApp (Web Share API - perfecto para móviles)
-        async function enviarImagenWhatsApp() {
-            if (!currentImageData) return;
-
-            const mensaje = 'Hola, me interesa realizar un pedido';
+            // Feedback visual en el botón
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
 
             try {
-                const response = await fetch(currentImageData.imgSrc);
-                const blob = await response.blob();
-                const fileName = currentImageData.imgSrc.split('/').pop() || 'catalogo.jpg';
-                const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
-
-                // Intentar usar Web Share API
-                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                    await navigator.share({
-                        files: [file],
-                        title: 'Catálogo ServiMedic',
-                        text: mensaje
-                    });
-                    ocultarMenuOpciones();
-                    return;
-                }
-
-                // Si Web Share API no está disponible, abrir WhatsApp directamente
-                alert('Esta opción funciona mejor en dispositivos móviles. Intenta "Copiar imagen y abrir WhatsApp"');
-            } catch (err) {
-                console.log('Share cancelado:', err);
-            }
-
-            ocultarMenuOpciones();
-        }
-
-        // Opción 2: Copiar imagen al portapapeles y abrir WhatsApp
-        async function copiarYAbrirWhatsApp() {
-            if (!currentImageData) return;
-
-            const mensaje = 'Hola, me interesa realizar un pedido';
-
-            try {
-                const response = await fetch(currentImageData.imgSrc);
+                const response = await fetch(imgSrc);
                 const blob = await response.blob();
 
-                // Intentar copiar al portapapeles
+                // 1. Intentar copiar al portapapeles
                 if (navigator.clipboard && navigator.clipboard.write) {
                     await navigator.clipboard.write([
                         new ClipboardItem({
@@ -1930,62 +1941,36 @@
                     ]);
                 }
 
-                // Abrir WhatsApp
+                // 2. Mostrar notificación instructiva (Toast)
+                const toast = document.getElementById('pasteToast');
+                toast.style.display = 'flex';
+
+                // Ocultar toast después de la animación
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2500);
+
+                // 3. Pequeña pausa para que el usuario vea el mensaje y el sistema procese
+                await new Promise(resolve => setTimeout(resolve, 800));
+
+                // 4. Abrir WhatsApp
                 window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
+
             } catch (err) {
                 console.error('Error:', err);
-                // Aún así, abrir WhatsApp
+                // Fallback: abrir WhatsApp directo si falla algo
                 window.open(`https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`, '_blank');
+            } finally {
+                btn.innerHTML = originalText;
             }
-
-            ocultarMenuOpciones();
         }
 
-        // Opción 3: Descargar imagen
-        async function descargarImagen() {
-            if (!currentImageData) return;
-
-            try {
-                const response = await fetch(currentImageData.imgSrc);
-                const blob = await response.blob();
-                const fileName = currentImageData.imgSrc.split('/').pop() || 'catalogo.jpg';
-
-                const downloadLink = document.createElement('a');
-                downloadLink.href = URL.createObjectURL(blob);
-                downloadLink.download = fileName;
-                downloadLink.style.display = 'none';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-                URL.revokeObjectURL(downloadLink.href);
-            } catch (err) {
-                console.error('Error al descargar:', err);
-                alert('Error al descargar la imagen');
-            }
-
-            ocultarMenuOpciones();
-        }
-
-        // Event listeners para el menú de opciones
+        // Vincular el click de los botones
         document.addEventListener('DOMContentLoaded', function () {
-            // Botones del menú
-            document.getElementById('btnEnviarWhatsApp').addEventListener('click', enviarImagenWhatsApp);
-            document.getElementById('btnCopiarAbrir').addEventListener('click', copiarYAbrirWhatsApp);
-            document.getElementById('btnDescargar').addEventListener('click', descargarImagen);
-            document.getElementById('btnCancelar').addEventListener('click', ocultarMenuOpciones);
-
-            // Cerrar menú al hacer clic en el fondo
-            document.getElementById('catalogoOptionsMenu').addEventListener('click', function (e) {
-                if (e.target === this) {
-                    ocultarMenuOpciones();
-                }
-            });
-
-            // Vincular botones "Consultar por WhatsApp" para mostrar el menú
             document.querySelectorAll('.consultar-catalogo').forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
-                    mostrarMenuOpciones(this);
+                    compartirCatalogoPorWhatsApp(this);
                 });
             });
         });
