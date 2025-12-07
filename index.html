@@ -1102,6 +1102,9 @@
             target="_blank">
             <i class="fab fa-whatsapp"></i> Sueroterapia
         </a>
+        <a href="#" id="saveContactBtn" onclick="guardarContacto(); return false;" style="background-color: #4FC3F7;">
+            <i class="fas fa-user-plus"></i> Guardar Contacto
+        </a>
     </div>
 
     <!-- Modales para los catálogos -->
@@ -1701,6 +1704,36 @@
             const mensaje = `Hola, me interesa realizar un pedido de: ${medicamento}`;
             const url = `https://wa.me/50259167747?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
+        }
+
+        // Función para guardar el contacto en el teléfono
+        function guardarContacto() {
+            // Crear el contenido del archivo vCard
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:ServiMedic - Farmacia
+TEL;TYPE=CELL:+50259167747
+NOTE:Tu farmacia de confianza en Huehuetenango
+END:VCARD`;
+
+            // Crear un Blob con el contenido vCard
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+
+            // Crear un enlace temporal para descargar
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'ServiMedic.vcf';
+
+            // Simular el clic para descargar
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Limpiar el URL del objeto
+            URL.revokeObjectURL(link.href);
+
+            // Cerrar el menú de WhatsApp
+            document.getElementById('whatsappMenu').classList.remove('show');
         }
 
         // Smooth scroll para los enlaces del navbar
