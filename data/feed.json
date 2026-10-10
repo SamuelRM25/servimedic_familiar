@@ -1,0 +1,548 @@
+{
+  "categorias": [
+    "Todos",
+    "Clinova"
+  ],
+  "imagenes": [
+    {
+      "id": 1,
+      "src": "assets/images/feed/imagen1.jpeg",
+      "descripcion": "Producto Clinova 1",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 2,
+      "src": "assets/images/feed/imagen2.jpeg",
+      "descripcion": "Producto Clinova 2",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 3,
+      "src": "assets/images/feed/imagen3.jpeg",
+      "descripcion": "Producto Clinova 3",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 4,
+      "src": "assets/images/feed/imagen4.jpeg",
+      "descripcion": "Producto Clinova 4",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 5,
+      "src": "assets/images/feed/imagen5.jpeg",
+      "descripcion": "Producto Clinova 5",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 6,
+      "src": "assets/images/feed/imagen6.jpeg",
+      "descripcion": "Producto Clinova 6",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 7,
+      "src": "assets/images/feed/imagen7.jpeg",
+      "descripcion": "Producto Clinova 7",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 8,
+      "src": "assets/images/feed/imagen8.jpeg",
+      "descripcion": "Producto Clinova 8",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 9,
+      "src": "assets/images/feed/imagen9.jpeg",
+      "descripcion": "Producto Clinova 9",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 10,
+      "src": "assets/images/feed/imagen10.jpeg",
+      "descripcion": "Producto Clinova 10",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 11,
+      "src": "assets/images/feed/imagen11.jpeg",
+      "descripcion": "Producto Clinova 11",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 12,
+      "src": "assets/images/feed/imagen12.jpeg",
+      "descripcion": "Producto Clinova 12",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 13,
+      "src": "assets/images/feed/imagen13.jpeg",
+      "descripcion": "Producto Clinova 13",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 14,
+      "src": "assets/images/feed/imagen14.jpeg",
+      "descripcion": "Producto Clinova 14",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 15,
+      "src": "assets/images/feed/imagen15.jpeg",
+      "descripcion": "Producto Clinova 15",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 16,
+      "src": "assets/images/feed/imagen16.jpeg",
+      "descripcion": "Producto Clinova 16",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 17,
+      "src": "assets/images/feed/imagen17.jpeg",
+      "descripcion": "Producto Clinova 17",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 18,
+      "src": "assets/images/feed/imagen18.jpeg",
+      "descripcion": "Producto Clinova 18",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 19,
+      "src": "assets/images/feed/imagen19.jpeg",
+      "descripcion": "Producto Clinova 19",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 20,
+      "src": "assets/images/feed/imagen20.jpeg",
+      "descripcion": "Producto Clinova 20",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 21,
+      "src": "assets/images/feed/imagen21.jpeg",
+      "descripcion": "Producto Clinova 21",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 22,
+      "src": "assets/images/feed/imagen22.jpeg",
+      "descripcion": "Producto Clinova 22",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 23,
+      "src": "assets/images/feed/imagen23.jpeg",
+      "descripcion": "Producto Clinova 23",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 24,
+      "src": "assets/images/feed/imagen24.jpeg",
+      "descripcion": "Producto Clinova 24",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 25,
+      "src": "assets/images/feed/imagen25.jpeg",
+      "descripcion": "Producto Clinova 25",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 26,
+      "src": "assets/images/feed/imagen26.jpeg",
+      "descripcion": "Producto Clinova 26",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 27,
+      "src": "assets/images/feed/imagen27.jpeg",
+      "descripcion": "Producto Clinova 27",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 28,
+      "src": "assets/images/feed/imagen28.jpeg",
+      "descripcion": "Producto Clinova 28",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 29,
+      "src": "assets/images/feed/imagen29.jpeg",
+      "descripcion": "Producto Clinova 29",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 30,
+      "src": "assets/images/feed/imagen30.jpeg",
+      "descripcion": "Producto Clinova 30",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 31,
+      "src": "assets/images/feed/imagen31.jpeg",
+      "descripcion": "Producto Clinova 31",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 32,
+      "src": "assets/images/feed/imagen32.jpeg",
+      "descripcion": "Producto Clinova 32",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 33,
+      "src": "assets/images/feed/imagen33.jpeg",
+      "descripcion": "Producto Clinova 33",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 34,
+      "src": "assets/images/feed/imagen34.jpeg",
+      "descripcion": "Producto Clinova 34",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 35,
+      "src": "assets/images/feed/imagen35.jpeg",
+      "descripcion": "Producto Clinova 35",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 36,
+      "src": "assets/images/feed/imagen36.jpeg",
+      "descripcion": "Producto Clinova 36",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 37,
+      "src": "assets/images/feed/imagen37.jpeg",
+      "descripcion": "Producto Clinova 37",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 38,
+      "src": "assets/images/feed/imagen38.jpeg",
+      "descripcion": "Producto Clinova 38",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 39,
+      "src": "assets/images/feed/imagen39.jpeg",
+      "descripcion": "Producto Clinova 39",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 40,
+      "src": "assets/images/feed/imagen40.jpeg",
+      "descripcion": "Producto Clinova 40",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 41,
+      "src": "assets/images/feed/imagen41.jpeg",
+      "descripcion": "Producto Clinova 41",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 42,
+      "src": "assets/images/feed/imagen42.jpeg",
+      "descripcion": "Producto Clinova 42",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 43,
+      "src": "assets/images/feed/imagen43.jpeg",
+      "descripcion": "Producto Clinova 43",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 44,
+      "src": "assets/images/feed/imagen44.jpeg",
+      "descripcion": "Producto Clinova 44",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 45,
+      "src": "assets/images/feed/imagen45.jpeg",
+      "descripcion": "Producto Clinova 45",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 46,
+      "src": "assets/images/feed/imagen46.jpeg",
+      "descripcion": "Producto Clinova 46",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 47,
+      "src": "assets/images/feed/imagen47.jpeg",
+      "descripcion": "Producto Clinova 47",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 48,
+      "src": "assets/images/feed/imagen48.jpeg",
+      "descripcion": "Producto Clinova 48",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 49,
+      "src": "assets/images/feed/imagen49.jpeg",
+      "descripcion": "Producto Clinova 49",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 50,
+      "src": "assets/images/feed/imagen50.jpeg",
+      "descripcion": "Producto Clinova 50",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 51,
+      "src": "assets/images/feed/imagen51.jpeg",
+      "descripcion": "Producto Clinova 51",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 52,
+      "src": "assets/images/feed/imagen52.jpeg",
+      "descripcion": "Producto Clinova 52",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 53,
+      "src": "assets/images/feed/imagen53.jpeg",
+      "descripcion": "Producto Clinova 53",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 54,
+      "src": "assets/images/feed/imagen54.jpeg",
+      "descripcion": "Producto Clinova 54",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 55,
+      "src": "assets/images/feed/imagen55.jpeg",
+      "descripcion": "Producto Clinova 55",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 56,
+      "src": "assets/images/feed/imagen56.jpeg",
+      "descripcion": "Producto Clinova 56",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 57,
+      "src": "assets/images/feed/imagen57.jpeg",
+      "descripcion": "Producto Clinova 57",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 58,
+      "src": "assets/images/feed/imagen58.jpeg",
+      "descripcion": "Producto Clinova 58",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 59,
+      "src": "assets/images/feed/imagen59.jpeg",
+      "descripcion": "Producto Clinova 59",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 60,
+      "src": "assets/images/feed/imagen60.jpeg",
+      "descripcion": "Producto Clinova 60",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 61,
+      "src": "assets/images/feed/imagen61.jpeg",
+      "descripcion": "Producto Clinova 61",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 62,
+      "src": "assets/images/feed/imagen62.jpeg",
+      "descripcion": "Producto Clinova 62",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 63,
+      "src": "assets/images/feed/imagen63.jpeg",
+      "descripcion": "Producto Clinova 63",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 64,
+      "src": "assets/images/feed/imagen64.jpeg",
+      "descripcion": "Producto Clinova 64",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 65,
+      "src": "assets/images/feed/imagen65.jpeg",
+      "descripcion": "Producto Clinova 65",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 66,
+      "src": "assets/images/feed/imagen66.jpeg",
+      "descripcion": "Producto Clinova 66",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 67,
+      "src": "assets/images/feed/imagen67.jpeg",
+      "descripcion": "Producto Clinova 67",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 68,
+      "src": "assets/images/feed/imagen68.jpeg",
+      "descripcion": "Producto Clinova 68",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 69,
+      "src": "assets/images/feed/imagen69.jpeg",
+      "descripcion": "Producto Clinova 69",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 70,
+      "src": "assets/images/feed/imagen70.jpeg",
+      "descripcion": "Producto Clinova 70",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 71,
+      "src": "assets/images/feed/imagen71.jpeg",
+      "descripcion": "Producto Clinova 71",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 72,
+      "src": "assets/images/feed/imagen72.jpeg",
+      "descripcion": "Producto Clinova 72",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 73,
+      "src": "assets/images/feed/imagen73.jpeg",
+      "descripcion": "Producto Clinova 73",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 74,
+      "src": "assets/images/feed/imagen74.jpeg",
+      "descripcion": "Producto Clinova 74",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 75,
+      "src": "assets/images/feed/imagen75.jpeg",
+      "descripcion": "Producto Clinova 75",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 76,
+      "src": "assets/images/feed/imagen76.jpeg",
+      "descripcion": "Producto Clinova 76",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 77,
+      "src": "assets/images/feed/imagen77.jpeg",
+      "descripcion": "Producto Clinova 77",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 78,
+      "src": "assets/images/feed/imagen78.jpeg",
+      "descripcion": "Producto Clinova 78",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 79,
+      "src": "assets/images/feed/imagen79.jpeg",
+      "descripcion": "Producto Clinova 79",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 80,
+      "src": "assets/images/feed/imagen80.jpeg",
+      "descripcion": "Producto Clinova 80",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 81,
+      "src": "assets/images/feed/imagen81.jpeg",
+      "descripcion": "Producto Clinova 81",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 82,
+      "src": "assets/images/feed/imagen82.jpeg",
+      "descripcion": "Producto Clinova 82",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 83,
+      "src": "assets/images/feed/imagen83.jpeg",
+      "descripcion": "Producto Clinova 83",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 84,
+      "src": "assets/images/feed/imagen84.jpeg",
+      "descripcion": "Producto Clinova 84",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 85,
+      "src": "assets/images/feed/imagen85.jpeg",
+      "descripcion": "Producto Clinova 85",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 86,
+      "src": "assets/images/feed/imagen86.jpeg",
+      "descripcion": "Producto Clinova 86",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 87,
+      "src": "assets/images/feed/imagen87.jpeg",
+      "descripcion": "Producto Clinova 87",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 88,
+      "src": "assets/images/feed/imagen88.jpeg",
+      "descripcion": "Producto Clinova 88",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 89,
+      "src": "assets/images/feed/imagen89.jpeg",
+      "descripcion": "Producto Clinova 89",
+      "categoria": "Clinova"
+    },
+    {
+      "id": 90,
+      "src": "assets/images/feed/imagen90.jpeg",
+      "descripcion": "Producto Clinova 90",
+      "categoria": "Clinova"
+    }
+  ]
+}
