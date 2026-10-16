@@ -1541,6 +1541,7 @@
         // FEED: carga desde data/feed.json, genera cards, filtros
         // ============================================================
         const WA_PHONE = '50259167747';
+        const SITE_DOMAIN = 'https://servimedic.com.gt';
 
         const state = {
             data: null,
@@ -1660,66 +1661,26 @@
         // ============================================================
         // CONSULTAR CON IMAGEN — Web Share API + fallback
         // ============================================================
-        async function consultarConImagen(img) {
-            const texto = `Hola, me interesa: ${img.descripcion}`;
+        function consultarConImagen(img) {
+            // Construir URL: absoluta en producción, relativa en local (file://)
+            const isLocal = location.protocol === 'file:';
+            const baseUrl = isLocal ? '' : SITE_DOMAIN;
+            const imageUrl = `${baseUrl}/${img.src}`;
 
-            // Feedback visual: atenuar el botón mientras se procesa
-            const btn = document.querySelector(`a[data-img-id="${img.id}"]`);
-            if (btn) {
-                btn.style.opacity = '0.6';
-                btn.style.pointerEvents = 'none';
-            }
+            // Mensaje con link de referencia
+            const texto = `Hola, me interesa: ${img.descripcion}\n${imageUrl}`;
 
-            try {
-                // 1) Descargar la imagen como blob
-                const response = await fetch(img.src);
-                const blob = await response.blob();
-                const mimeType = blob.type || 'image/jpeg';
+            // Abrir WhatsApp directamente con el mensaje pre-armado
+            const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(texto)}`;
+            window.open(waUrl, '_blank');
 
-                // 2) Intentar copiar al portapapeles
-                let copied = false;
-                if (navigator.clipboard && window.ClipboardItem) {
-                    try {
-                        await navigator.clipboard.write([
-                            new ClipboardItem({ [mimeType]: blob })
-                        ]);
-                        copied = true;
-                    } catch (clipErr) {
-                        console.warn('Clipboard falló:', clipErr);
-                    }
-                }
-
-                // 3) Abrir WhatsApp directamente con el mensaje pre-armado
-                const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(texto)}`;
-                window.open(waUrl, '_blank');
-
-                // 4) Mostrar toast indicando al usuario que pegue la imagen
-                if (copied) {
-                    mostrarToast({
-                        icono: 'fa-paste',
-                        titulo: 'Imagen copiada',
-                        mensaje: 'Pégala en el chat con ⌘/Ctrl + V',
-                        duracion: 6000
-                    });
-                } else {
-                    mostrarToast({
-                        icono: 'fa-circle-info',
-                        titulo: 'Mensaje enviado',
-                        mensaje: 'Si no se copió la imagen, envíala manualmente',
-                        duracion: 5000
-                    });
-                }
-            } catch (err) {
-                console.error('Error al consultar:', err);
-                // Fallback mínimo: solo abrir WhatsApp con texto
-                const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(texto)}`;
-                window.open(waUrl, '_blank');
-            } finally {
-                if (btn) {
-                    btn.style.opacity = '';
-                    btn.style.pointerEvents = '';
-                }
-            }
+            // Toast informativo
+            mostrarToast({
+                icono: 'fa-paper-plane',
+                titulo: 'Abriendo WhatsApp',
+                mensaje: 'Link de referencia incluido',
+                duracion: 3000
+            });
         }
 
         // Toast estructurado: { icono, titulo, mensaje, duracion }
