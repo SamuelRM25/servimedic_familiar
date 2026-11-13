@@ -16,10 +16,12 @@
         content="Medicamentos, suplementos, vacunas y sueroterapia. Pide por WhatsApp y recibe en la comodidad de tu hogar.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_GT">
-    <meta property="og:image" content="assets/logo/logoclinova.png">
+    <meta property="og:image" content="assets/images/hero/portada-hero.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+    <link rel="icon" type="image/png" href="assets/logo/favicon-clinova.png">
+    <link rel="apple-touch-icon" href="assets/logo/clinova-logo-circulo.png">
+    <link rel="preload" as="image" href="assets/images/hero/portada-hero-720.webp" imagesrcset="assets/images/hero/portada-hero-720.webp 720w, assets/images/hero/portada-hero.webp 1254w" imagesizes="(min-width: 992px) 520px, 92vw">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -204,10 +206,11 @@
         }
 
         .navbar-clinova .navbar-brand img {
-            height: 36px;
-            width: 36px;
-            border-radius: 8px;
+            height: 46px;
+            width: 46px;
+            border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 2px 8px rgba(11, 132, 255, 0.25);
         }
 
         .navbar-clinova .nav-link {
@@ -293,10 +296,325 @@
         }
 
         /* ===== HERO ===== */
+        /* Hero a pantalla completa: gradient mesh animado + formas líquidas (liquid morph) */
         .hero {
-            padding: 5rem 0 4rem;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
+            --hero-navy: #0B1F5C;
+            --hero-blue: #1B3A8C;
+            --hero-sky: #0B84FF;
+            --hero-orange: #F26B1D;
+            --hero-cyan: #38BDF8;
+            --mx: 70%;
+            --my: 40%;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: calc(100vh - 70px);
+            min-height: calc(100svh - 70px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 0 7rem;
+            background: var(--hero-navy);
+            color: #fff;
+        }
+
+        /* --- Gradient mesh: capas de degradados radiales que se desplazan --- */
+        .hero-mesh {
+            position: absolute;
+            inset: -20%;
+            z-index: -3;
+            background:
+                radial-gradient(40% 45% at 18% 22%, rgba(11, 132, 255, 0.55), transparent 70%),
+                radial-gradient(35% 40% at 82% 18%, rgba(242, 107, 29, 0.50), transparent 70%),
+                radial-gradient(45% 50% at 75% 85%, rgba(56, 189, 248, 0.35), transparent 70%),
+                radial-gradient(50% 55% at 12% 88%, rgba(27, 58, 140, 0.90), transparent 70%),
+                radial-gradient(30% 35% at 50% 50%, rgba(242, 107, 29, 0.18), transparent 70%);
+            animation: meshDrift 22s ease-in-out infinite alternate;
+        }
+
+        .hero-mesh--b {
+            z-index: -3;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+            background:
+                radial-gradient(30% 35% at 65% 30%, rgba(11, 132, 255, 0.45), transparent 70%),
+                radial-gradient(28% 30% at 30% 70%, rgba(242, 107, 29, 0.30), transparent 70%);
+            animation: meshDrift2 28s ease-in-out infinite alternate;
+        }
+
+        /* Luz que sigue al cursor */
+        .hero-glow {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: radial-gradient(500px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.10), transparent 60%);
+            transition: background 0.2s linear;
+            pointer-events: none;
+        }
+
+        /* Textura sutil de granos para quitar el "banding" del degradado */
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes meshDrift {
+            0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+            50%  { transform: translate3d(4%, -3%, 0) rotate(8deg) scale(1.08); }
+            100% { transform: translate3d(-3%, 4%, 0) rotate(-6deg) scale(1.04); }
+        }
+
+        @keyframes meshDrift2 {
+            0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+            100% { transform: translate3d(-6%, 5%, 0) rotate(-14deg); }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr minmax(0, 560px);
+                gap: 4.5rem;
+            }
+        }
+
+        .hero-copy {
+            opacity: 0;
+            animation: fadeUp 800ms var(--ease-out-soft) 150ms forwards;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #FFD3BA;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 4.6rem);
+            line-height: 1.02;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            background: linear-gradient(100deg, #FF9A5A, #F26B1D 45%, #FFB38A 90%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 6s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .hero-lead {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.80);
+            max-width: 34rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .hero-actions .btn-secondary-clinova {
+            box-shadow: 0 10px 30px rgba(242, 107, 29, 0.45);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.30);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.55);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 1.6rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-trust i {
+            color: #FF9A5A;
+            margin-right: 0.45rem;
+        }
+
+        /* --- Portada con formas líquidas (liquid morph) detrás --- */
+        .hero-media {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 900ms var(--ease-out-soft) 300ms forwards;
+        }
+
+        .liquid {
+            position: absolute;
+            z-index: 0;
+            border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+            animation: liquidMorph 12s ease-in-out infinite, liquidSpin 30s linear infinite;
+            will-change: border-radius, transform;
+        }
+
+        .liquid--orange {
+            inset: -9% -7% 8% 14%;
+            background: linear-gradient(135deg, #FF9A5A, #F26B1D 55%, #C2410C);
+            opacity: 0.85;
+        }
+
+        .liquid--blue {
+            inset: 12% 10% -9% -9%;
+            background: linear-gradient(135deg, #38BDF8, #0B84FF 50%, #1B3A8C);
+            opacity: 0.80;
+            animation-duration: 14s, 38s;
+            animation-direction: alternate, reverse;
+        }
+
+        .liquid--ring {
+            inset: -5%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            animation-duration: 16s, 45s;
+        }
+
+        @keyframes liquidMorph {
+            0%   { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+            25%  { border-radius: 63% 37% 45% 55% / 55% 62% 38% 45%; }
+            50%  { border-radius: 38% 62% 35% 65% / 62% 35% 65% 38%; }
+            75%  { border-radius: 55% 45% 68% 32% / 38% 58% 42% 62%; }
+            100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+        }
+
+        @keyframes liquidSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-poster {
+            position: relative;
+            z-index: 1;
+            border-radius: 26px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 30px 80px rgba(3, 10, 40, 0.55);
+            animation: floaty 7s ease-in-out infinite;
+        }
+
+        .hero-poster img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            background: #fff;
+        }
+
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-12px); }
+        }
+
+        /* --- Ola líquida inferior que da paso al resto de la página --- */
+        .hero-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            width: 100%;
+            height: 110px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            left: 50%;
+            bottom: 26px;
+            z-index: 2;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 42px;
+            border: 2px solid rgba(30, 42, 53, 0.35);
+            border-radius: 14px;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            width: 4px;
+            height: 8px;
+            margin-left: -2px;
+            border-radius: 2px;
+            background: rgba(30, 42, 53, 0.55);
+            animation: scrollDot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0%   { opacity: 0; transform: translateY(0); }
+            40%  { opacity: 1; }
+            100% { opacity: 0; transform: translateY(14px); }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero { padding: 2.5rem 0 6.5rem; align-items: flex-start; }
+            .hero-media { order: -1; max-width: min(340px, 82vw); }
+            .hero-copy { text-align: center; }
+            .hero-lead { margin-left: auto; margin-right: auto; }
+            .hero-actions, .hero-trust { justify-content: center; }
+            .hero-scroll { display: none; }
+            .hero-wave { height: 70px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-copy, .hero-media { animation: none; opacity: 1; }
+            .hero-mesh, .hero-mesh--b, .liquid, .hero-poster,
+            .hero-title span, .hero-scroll::after { animation: none; }
         }
 
 
@@ -1099,14 +1417,31 @@
             outline-offset: 3px;
         }
     </style>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1385684646648230');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
+    <!-- Meta Pixel (noscript) -->
+    <noscript><img height="1" width="1" style="display:none" alt=""
+        src="https://www.facebook.com/tr?id=1385684646648230&ev=PageView&noscript=1" /></noscript>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-clinova">
         <div class="container">
             <a class="navbar-brand" href="#inicio">
-                <img src="assets/logo/logoclinova.png" alt="Clinova">
+                <img src="assets/logo/clinova-logo-circulo.png" alt="Logo de Clinova" width="46" height="46">
                 <span>Clinova</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
@@ -1130,6 +1465,77 @@
             </div>
         </div>
     </nav>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-mesh" aria-hidden="true"></div>
+        <div class="hero-mesh hero-mesh--b" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-grain" aria-hidden="true"></div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <span class="hero-eyebrow"><i class="fas fa-truck-fast"></i> Envíos a todo el país</span>
+                    <h1 class="hero-title">Tu aliado <span>en salud</span></h1>
+                    <p class="hero-lead">
+                        Medicamentos, suplementos, vacunas y sueroterapia con respaldo y atención profesional.
+                        Haz tu pedido por WhatsApp y recíbelo en la comodidad de tu hogar.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn-clinova btn-secondary-clinova"
+                            href="https://wa.me/50259167747?text=Hola%2C%20me%20interesa%20realizar%20un%20pedido"
+                            target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i> Haz tu pedido hoy
+                        </a>
+                        <a class="btn-clinova btn-glass" href="#catalogo">
+                            <i class="fas fa-pills"></i> Ver catálogo
+                        </a>
+                    </div>
+                    <ul class="hero-trust">
+                        <li><i class="fas fa-shield-halved"></i>Productos confiables</li>
+                        <li><i class="fas fa-circle-check"></i>Efectividad comprobada</li>
+                        <li><i class="fas fa-user-doctor"></i>Atención profesional</li>
+                    </ul>
+                </div>
+
+                <div class="hero-media">
+                    <span class="liquid liquid--orange" aria-hidden="true"></span>
+                    <span class="liquid liquid--blue" aria-hidden="true"></span>
+                    <span class="liquid liquid--ring" aria-hidden="true"></span>
+                    <div class="hero-poster">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/hero/portada-hero-720.webp 720w, assets/images/hero/portada-hero.webp 1254w"
+                                sizes="(min-width: 992px) 560px, 90vw">
+                            <img src="assets/images/hero/portada-hero.jpg" width="1254" height="1254"
+                                alt="Clinova: medicamentos de calidad. Confianza, efectividad y seguridad. Envíos a todo el país."
+                                fetchpriority="high">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ola líquida: el contorno se transforma suavemente -->
+        <svg class="hero-wave" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#FAFAFA" fill-opacity="0.45">
+                <animate attributeName="d" dur="11s" repeatCount="indefinite" calcMode="spline"
+                    keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+                    values="M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,110 L0,110 Z;
+                            M0,45 C260,95 500,15 740,55 C980,95 1180,25 1440,65 L1440,110 L0,110 Z;
+                            M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,110 L0,110 Z" />
+            </path>
+            <path fill="#FAFAFA">
+                <animate attributeName="d" dur="8s" repeatCount="indefinite" calcMode="spline"
+                    keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+                    values="M0,80 C300,50 520,110 760,80 C1000,50 1220,100 1440,75 L1440,110 L0,110 Z;
+                            M0,75 C280,105 540,55 780,82 C1020,108 1240,60 1440,85 L1440,110 L0,110 Z;
+                            M0,80 C300,50 520,110 760,80 C1000,50 1220,100 1440,75 L1440,110 L0,110 Z" />
+            </path>
+        </svg>
+        <a class="hero-scroll" href="#catalogo" aria-label="Ir al catálogo"></a>
+    </section>
 
     <!-- FEED -->
 
@@ -1703,6 +2109,24 @@
 
             observer.observe(grid);
         }
+    </script>
+    <script>
+        // Hero: luz que sigue al cursor (solo en dispositivos con mouse)
+        (function () {
+            var hero = document.getElementById('inicio');
+            if (!hero || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var raf = null;
+            hero.addEventListener('pointermove', function (e) {
+                if (raf) return;
+                raf = requestAnimationFrame(function () {
+                    var r = hero.getBoundingClientRect();
+                    hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                    hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+                    raf = null;
+                });
+            });
+        })();
     </script>
 </body>
 
